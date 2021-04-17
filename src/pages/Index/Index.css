@@ -16,9 +16,11 @@
 }
 
 .cities-wrapper {
+  box-sizing: border-box;
   flex: 1;
   height: 100%;
   margin-right: 30px;
+  padding: 10px;
   background: #F7F7F7;
   border-radius: 15px;
 }

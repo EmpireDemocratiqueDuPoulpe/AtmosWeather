@@ -1,0 +1,16 @@
+.simple-city {
+  text-align: center;
+  width: 250px;
+  padding: 10px 0;
+  background: rgba(147, 64, 243, 0.4);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.simple-city:hover {
+  background: rgba(147, 64, 243, 0.8);
+}
+
+.simple-city-name {
+  margin: 0 0 10px 0;
+}
