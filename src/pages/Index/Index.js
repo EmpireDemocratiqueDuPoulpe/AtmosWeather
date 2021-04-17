@@ -1,7 +1,15 @@
+import "./Index.css";
+
 const Index = () => {
 	return (
-		<div>
-			<p>Index</p>
+		<div className="sky">
+			<div className="cities-wrapper">
+
+			</div>
+
+			<div className="city-detail">
+
+			</div>
 		</div>
 	);
 };

@@ -9,7 +9,7 @@ const browserHistory = createBrowserHistory();
 export default function App() {
 	return (
 		<Router history={browserHistory}>
-			<main>
+			<main className="App">
 				<header className="App-header"> </header>
 
 				<div className="App-body">
