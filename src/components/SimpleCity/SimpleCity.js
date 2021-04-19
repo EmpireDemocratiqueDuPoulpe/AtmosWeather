@@ -17,6 +17,24 @@ export default class SimpleCity extends React.Component {
 		};
 	}
 
+	/*********************************
+	 * Events
+	 *********************************/
+
+	/* It's an arrow function to keep access to {this} without binding. */
+	handleClick = () => {
+		const { isLoaded, city } = this.state;
+		const { name, onClick } = this.props;
+
+		if (isLoaded) {
+			onClick(name, city);
+		}
+	}
+
+	/*********************************
+	 * React functions
+	 *********************************/
+
 	componentDidMount() {
 		const { name } = this.props;
 		const { oweather } = config;
@@ -36,13 +54,14 @@ export default class SimpleCity extends React.Component {
 		const { name } = this.props;
 
 		return (
-			<div className="simple-city">
+			<div className="simple-city" onClick={this.handleClick}>
 				<h2 className="simple-city-name">{name}</h2>
 				{ isLoaded ? this.renderData() : this.renderLoading() }
 			</div>
 		);
 	}
 
+	// TODO: Better loading (gif, animation)
 	renderLoading() {
 		return (
 			<p>Chargement en cours...</p>
@@ -77,5 +96,10 @@ export default class SimpleCity extends React.Component {
 }
 
 SimpleCity.propTypes = {
-	name: PropTypes.string.isRequired
+	name: PropTypes.string.isRequired,
+	onClick: PropTypes.func
+};
+
+SimpleCity.defaultProps = {
+	onClick: () => {}
 };
