@@ -18,7 +18,7 @@ Weather.propTypes = {
 			id: PropTypes.number,
 			main: PropTypes.string,
 			description: PropTypes.string,
-			icon: PropTypes.number
+			icon: PropTypes.string
 		})
 	).isRequired
 };

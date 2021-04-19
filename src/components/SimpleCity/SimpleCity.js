@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Weather from "./Weather/Weather";
 import Temperature from "./Temperature/Temperature";
 import Wind from "./Wind/Wind.js";
@@ -6,12 +7,10 @@ import config from "../../config/config.js";
 import "./SimpleCity.css";
 
 export default class SimpleCity extends React.Component {
-
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			name: "Paris",
 			isLoaded: false,
 			city: null,
 			error: null
@@ -19,7 +18,7 @@ export default class SimpleCity extends React.Component {
 	}
 
 	componentDidMount() {
-		const { name } = this.state;
+		const { name } = this.props;
 		const { oweather } = config;
 		const options = { headers: { Accept: "application/json" } };
 
@@ -33,7 +32,8 @@ export default class SimpleCity extends React.Component {
 	}
 
 	render() {
-		const { isLoaded, name } = this.state;
+		const { isLoaded } = this.state;
+		const { name } = this.props;
 
 		return (
 			<div className="simple-city">
@@ -66,7 +66,7 @@ export default class SimpleCity extends React.Component {
 					) : (
 						<div className="sc-data">
 							<Weather weather={city.weather}/>
-							{ showTemperature && <Temperature value={main.temp}/> }
+							{ showTemperature && <Temperature value={main.temp} feelsLike={main.feels_like}/> }
 							{ showWind && <Wind speed={wind.speed} deg={wind.deg}/> }
 						</div>
 					)
@@ -75,3 +75,7 @@ export default class SimpleCity extends React.Component {
 		);
 	}
 }
+
+SimpleCity.propTypes = {
+	name: PropTypes.string.isRequired
+};

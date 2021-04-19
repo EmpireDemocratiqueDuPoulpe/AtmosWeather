@@ -1,4 +1,5 @@
 .simple-city {
+  position: relative;
   text-align: center;
   width: 250px;
   padding: 10px 0;

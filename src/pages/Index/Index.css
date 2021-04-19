@@ -18,11 +18,32 @@
 .cities-wrapper {
   box-sizing: border-box;
   flex: 1;
+  display: grid;
+  /* 250px is the width of a .simple-city element */
+  grid-template-columns: repeat(auto-fit, 250px);
+  justify-content: space-evenly;
+  grid-row-gap: 10px;
+  /*display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;*/
   height: 100%;
   margin-right: 30px;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   background: #F7F7F7;
   border-radius: 15px;
+  overflow: auto;
+}
+
+/* Fix for some browsers when overflow: auto and padding doesn't work well together. */
+.cities-wrapper > :last-child::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  display: block;
+  width: 1px;
+  height: 10px;
 }
 
 .city-detail {

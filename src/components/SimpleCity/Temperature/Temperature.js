@@ -2,10 +2,14 @@ import PropTypes from "prop-types";
 import config from "../../../config/config";
 
 const Temperature = (props) => (
-	<p className="sc-temperature">{props.value} {getTemperatureUnit()}</p>
+	<p className="sc-temperature">
+		{props.value}&nbsp;{getTemperatureUnit()}
+		{props.feelsLike && (
+			<span>&nbsp;(ressenti: {props.feelsLike}&nbsp;{getTemperatureUnit()})</span>
+		)}
+	</p>
 );
 
-// TODO: Feels like
 Temperature.propTypes = {
 	value: PropTypes.number.isRequired,
 	feelsLike: PropTypes.number
