@@ -41,7 +41,7 @@ export default class SimpleCity extends React.Component {
 		const options = { headers: { Accept: "application/json" } };
 
 		fetch(
-			`https://${oweather.endpoint}?q=${name}&units=${oweather.units}&lang=${oweather.lang}&appid=${oweather.key}`,
+			`https://${oweather.current}?q=${name}&units=${oweather.units}&lang=${oweather.lang}&appid=${oweather.key}`,
 			options
 		)
 			.then(response => response.json())

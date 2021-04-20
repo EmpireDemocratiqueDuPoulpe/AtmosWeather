@@ -4,8 +4,7 @@ import DetailedCity from "../../components/DetailedCity/DetailedCity";
 import "./Index.css";
 
 const DEFAULT_CITIES = [
-	"Paris", "Washington", "Venise", "Pékin","Château-L'Abbaye", "Sidney",
-	"Montréal", "Helsinki", "Moscou", "Luxembourg", "Vatican"
+	"Paris", "Château-L'Abbaye", "Helsinki"
 ];
 
 const DEFAULT_CURRENT_CITY = { name: "", weather: null };
@@ -16,7 +15,7 @@ export default class Index extends React.Component {
 
 		this.state = {
 			cities: DEFAULT_CITIES,
-			currentCity: DEFAULT_CURRENT_CITY
+			//currentCity: DEFAULT_CURRENT_CITY
 		};
 	}
 
@@ -35,7 +34,8 @@ export default class Index extends React.Component {
 	/* It's an arrow function to keep access to {this} without binding. */
 	handleCityClick = (name, weather) => {
 		if (name !== undefined && weather !== undefined) {
-			this.setState({ currentCity: { name: name, weather: weather } });
+			//this.setState({ currentCity: { name: name, weather: weather } });
+			this.detailedCity.displayNewCity(name, weather);
 		}
 	}
 
@@ -44,7 +44,7 @@ export default class Index extends React.Component {
 	 *********************************/
 
 	render() {
-		const { cities, currentCity } = this.state;
+		const { cities } = this.state;
 
 		return (
 			<div className="sky">
@@ -57,7 +57,7 @@ export default class Index extends React.Component {
 				</div>
 
 				<div className="city-detail">
-					<DetailedCity name={currentCity.name} weather={currentCity.weather}/>
+					<DetailedCity onRef={ ref => this.detailedCity = ref }/>
 				</div>
 			</div>
 		);
