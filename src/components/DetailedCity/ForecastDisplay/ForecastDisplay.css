@@ -1,0 +1,13 @@
+.fd-previous-date {
+  width: 20px;
+  height: 20px;
+  background: pink;
+  cursor: pointer;
+}
+
+.fd-next-date {
+  width: 20px;
+  height: 20px;
+  background: red;
+  cursor: pointer;
+}

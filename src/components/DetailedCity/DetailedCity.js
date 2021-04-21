@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-//import moment from "moment";
 import { DateTime } from "luxon";
-import config from "../../config/config";
+import ForecastDisplay from "./ForecastDisplay/ForecastDisplay.js";
+import config from "../../config/config.js";
 
 const DEFAULT_CURRENT_CITY = { name: "", weather: null };
 
@@ -14,6 +14,7 @@ export default class DetailedCity extends React.Component {
 			currentCity: DEFAULT_CURRENT_CITY,
 			isLoaded: false,
 			forecast: null,
+			betterForecasts: null,
 			error: null
 		};
 	}
@@ -48,27 +49,46 @@ export default class DetailedCity extends React.Component {
 			.catch(err => this.setState({ error: err }));
 	}
 
+	/* This method takes the forecasts retrieved from the API and
+	 * restructures them into a simple form used to display the data.
+	 *
+	 * The final result looks like this:
+	 * newForecasts = [
+	 *	{
+	 *		date: "Tuesday 20 April"
+	 *		data: [
+	 *			{ time: "11:00", forecast: { ... } },
+	 * 			{ time: "14:00", forecast: { ... } },
+	 *			{ time: "18:00", forecast: { ... } },
+	 *			...
+	 *		]
+	 *	},
+	 *	...
+	 * ]
+	 */
 	restructureForecast() {
 		const { forecast: { list } } = this.state;
 		const { oweather } = config;
+		const newForecasts = [];
 
-		// TODO: Uninstall Moment.js
-		//moment.locale(oweather.lang);
+		let lastDate = null;
 
-		list.map((f, index) => {
-			//const timestamp = moment.unix(f.dt);
-			//const date = timestamp.format("LL");
-			//const time = timestamp.format("LT");
+		list.map((f) => {
 			const timestamp = DateTime.fromSeconds(f.dt).setLocale(oweather.lang);
 			const date = timestamp.toFormat("cccc dd LLL");
 			const time = timestamp.toFormat("HH:mm");
 
-			console.log(`Index: ${index}`);
-			console.log(date);
-			console.log(time);
+			const newF = { time: time, forecast: f };
 
-			// TODO: Create one section per day and per hour and store current section in state
+			if (lastDate !== date) {
+				lastDate = date;
+				newForecasts.push({ date: date, data: [ newF ] });
+			} else {
+				newForecasts[newForecasts.length - 1].data.push(newF);
+			}
 		});
+
+		this.setState({ betterForecasts: newForecasts });
 	}
 
 	/*********************************
@@ -101,7 +121,7 @@ export default class DetailedCity extends React.Component {
 	}
 
 	renderData() {
-		const { error } = this.state;
+		const { betterForecasts, error } = this.state;
 
 		return(
 			<div className="dc-body">
@@ -110,7 +130,9 @@ export default class DetailedCity extends React.Component {
 						<p className="dc-error">Une erreur est survenue: <span>{error}</span></p>
 					) : (
 						<div className="dc-data">
-							<p>Chargé</p>
+							{ betterForecasts && (
+								<ForecastDisplay forecasts={betterForecasts}/>
+							)}
 						</div>
 					)
 				}
@@ -120,7 +142,5 @@ export default class DetailedCity extends React.Component {
 }
 
 DetailedCity.propTypes = {
-	//name: PropTypes.string.isRequired,
-	//weather: PropTypes.object
 	onRef: PropTypes.func.isRequired
 };

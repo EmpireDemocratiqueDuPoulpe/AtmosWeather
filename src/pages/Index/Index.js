@@ -7,24 +7,13 @@ const DEFAULT_CITIES = [
 	"Paris", "Château-L'Abbaye", "Helsinki"
 ];
 
-const DEFAULT_CURRENT_CITY = { name: "", weather: null };
-
 export default class Index extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
 			cities: DEFAULT_CITIES,
-			//currentCity: DEFAULT_CURRENT_CITY
 		};
-	}
-
-	/*********************************
-	 * State
-	 *********************************/
-
-	resetCurrentCity() {
-		this.setState({ currentCity: DEFAULT_CURRENT_CITY });
 	}
 
 	/*********************************
@@ -34,7 +23,6 @@ export default class Index extends React.Component {
 	/* It's an arrow function to keep access to {this} without binding. */
 	handleCityClick = (name, weather) => {
 		if (name !== undefined && weather !== undefined) {
-			//this.setState({ currentCity: { name: name, weather: weather } });
 			this.detailedCity.displayNewCity(name, weather);
 		}
 	}
