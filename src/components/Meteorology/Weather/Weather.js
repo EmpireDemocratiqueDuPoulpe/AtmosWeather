@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import "./Weather.css";
 
 const Weather = (props) => (
-	<div className="sc-weather">
+	<div className="weather">
 		{props.weather && (
 			<div>
-				<div className="sc-weather-icon"/>
-				<h3 className="sc-weather-text">{props.weather[0].description}</h3>
+				<div className="weather-icon"/>
+				<h3 className="weather-text">{props.weather[0].description}</h3>
 			</div>
 		)}
 	</div>

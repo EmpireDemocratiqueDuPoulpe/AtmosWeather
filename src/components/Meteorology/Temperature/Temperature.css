@@ -1,0 +1,12 @@
+/* ---- Temperature ----------------------------- */
+/* -- Real temperature */
+.temperature .real-temp {
+  display: block;
+  font-size: 2em;
+}
+
+/* -- "Feels like to a human" temperature */
+.temperature .feels-like {
+  display: block;
+  font-size: 0.9em;
+}

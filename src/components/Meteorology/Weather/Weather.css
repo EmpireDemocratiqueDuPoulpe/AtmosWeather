@@ -1,21 +1,25 @@
-.sc-weather > div {
+/* ---- Weather --------------------------------- */
+/* -- Container */
+.weather > div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.sc-weather-icon {
+/* -- Icon */
+.weather-icon {
   width: 200px;
   height: 200px;
   background: hotpink;
 }
 
-.sc-weather-text {
+/* -- Text */
+.weather-text {
   font-size: 1em;
   margin: 10px 0 0 0;
 }
 
-.sc-weather-text::first-letter {
+.weather-text::first-letter {
   text-transform: uppercase;
 }

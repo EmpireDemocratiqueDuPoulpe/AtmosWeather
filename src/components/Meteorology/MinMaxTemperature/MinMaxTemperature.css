@@ -1,0 +1,16 @@
+/* ---- Min-Max Temperature --------------------- */
+/* -- Temperatures */
+.min-max-temperature {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* -- Arrows */
+.min-max-temperature .arrow {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: darkorchid;
+}

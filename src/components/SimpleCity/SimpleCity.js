@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Weather from "../Weather/Weather.js";
-import Temperature from "./Temperature/Temperature.js";
-import Wind from "../Wind/Wind.js";
+import Weather from "../Meteorology/Weather/Weather.js";
+import Temperature from "../Meteorology/Temperature/Temperature.js";
+import Wind from "../Meteorology/Wind/Wind.js";
 import config from "../../config/config.js";
 import "./SimpleCity.css";
 

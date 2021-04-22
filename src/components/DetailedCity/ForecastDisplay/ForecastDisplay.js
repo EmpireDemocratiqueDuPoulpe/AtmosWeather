@@ -1,7 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Weather from "../../Weather/Weather.js";
-import Wind from "../../Wind/Wind.js";
+import Weather from "../../Meteorology/Weather/Weather.js";
+import Temperature from "../../Meteorology/Temperature/Temperature.js";
+import MinMaxTemperature from "../../Meteorology/MinMaxTemperature/MinMaxTemperature.js";
+import Humidity from "../../Meteorology/Humidity/Humidity.js";
+import Pressure from "../../Meteorology/Pressure/Pressure.js";
+import Cloudiness from "../../Meteorology/Cloudiness/Cloudiness.js";
+import Visibility from "../../Meteorology/Visibility/Visibility.js";
+import Precipitation from "../../Meteorology/Precipitation/Precipitation.js";
+import RainSnow from "../../Meteorology/RainSnow/RainSnow.js";
+import Wind from "../../Meteorology/Wind/Wind.js";
 import "./ForecastDisplay.css";
 
 export default class ForecastDisplay extends React.Component {
@@ -65,6 +73,16 @@ export default class ForecastDisplay extends React.Component {
 	 * React functions
 	 *********************************/
 
+	getTimeClasses(index) {
+		const { currentTime } = this.state;
+
+		if (index < currentTime - 1) return "fd-time before-previous";
+		if (index === currentTime - 1) return "fd-time previous";
+		if (index === currentTime) return "fd-time current";
+		if (index === currentTime + 1) return "fd-time next";
+		if (index > currentTime + 1) return "fd-time after-next";
+	}
+
 	render() {
 		const { forecasts } = this.props;
 		const { currentDate, currentTime } = this.state;
@@ -88,8 +106,17 @@ export default class ForecastDisplay extends React.Component {
 				<div className="fd-time-changer">
 					<div className="fd-previous-time" onClick={this.toPreviousTime}/>
 
-					<div className="fd-current-time">
-						<span>{currentForecast.time}</span>
+					<div className="fd-all-time">
+						{
+							currentForecasts.data.map((data, index) => (
+								<span
+									key={index}
+									className={this.getTimeClasses(index)}
+								>
+									{data.time}
+								</span>
+							))
+						}
 					</div>
 
 					<div className="fd-next-time" onClick={this.toNextTime}/>
@@ -98,50 +125,22 @@ export default class ForecastDisplay extends React.Component {
 				<div className="fd-data">
 					<Weather weather={currentData.weather}/>
 
-					<div>
-						<span>{currentData.main.temp}</span>
-						<span>Ressenti: {currentData.main.feels_like}</span>
-						<span>Minimum: {currentData.main.temp_min}</span>
-						<span>Maximum: {currentData.main.temp_max}</span>
-					</div>
-
-					<div>
-						<span>Humidité: {currentData.main.humidity}%</span>
-					</div>
-
-					<div>
-						<span>Pression atmosphérique: {currentData.main.pressure} hPa</span>
-					</div>
-
-					<div>
-						<span>Couverture nuageuse: {currentData.clouds.all}%</span>
-					</div>
-
-					<div>
-						<span>Visibilité: {currentData.visibility}m</span>
-					</div>
-
-					<div>
-						<span>Précipitations: {currentData.pop}%</span>
-					</div>
-
-					{
-						currentData.rain && (
-							<div>
-								<span>Pluie (3h): {currentData.rain["3h"] ?? 0}mm</span>
-							</div>
-						)
-					}
-
-					{
-						currentData.snow && (
-							<div>
-								<span>Neige (3h): {currentData.snow["3h"] ?? 0}mm</span>
-							</div>
-						)
-					}
+					<Temperature value={currentData.main.temp} feelsLike={currentData.main.feels_like}/>
+					<MinMaxTemperature min={currentData.main.temp_min} max={currentData.main.temp_max}/>
 
 					<Wind speed={currentData.wind.speed} deg={currentData.wind.deg}/>
+
+					<Humidity value={currentData.main.humidity}/>
+					<Pressure value={currentData.main.pressure}/>
+
+					<Cloudiness value={currentData.clouds.all}/>
+					<Visibility inMeters={currentData.visibility} toKilometersAt={1000}/>
+
+					<Precipitation value={currentData.pop}/>
+					<RainSnow
+						rainLevel={currentData.rain ? currentData.rain["3h"] : null}
+						snowLevel={currentData.snow ? currentData.snow["3h"] : null}
+					/>
 				</div>
 			</div>
 		);

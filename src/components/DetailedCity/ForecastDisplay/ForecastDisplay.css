@@ -1,15 +1,101 @@
+/* ---- Date changer ---------------------------- */
+/* -- Container */
+.fd-date-changer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: teal;
+}
+
+/* -- Next & prev. arrows */
 .fd-previous-date,
-.fd-previous-time {
+.fd-next-date {
+  flex: 0 0 auto;
   width: 20px;
   height: 20px;
   background: pink;
   cursor: pointer;
 }
 
-.fd-next-date,
+.fd-next-date { background: red; }
+
+/* -- Selected date */
+.fd-current-date {
+  flex: 1;
+  text-align: center;
+}
+
+/* ---- Time changer ---------------------------- */
+/* -- Container */
+.fd-time-changer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: navajowhite;
+}
+
+/* -- Next & prev. arrows */
+.fd-previous-time,
 .fd-next-time {
+  flex: 0 0 auto;
   width: 20px;
   height: 20px;
-  background: red;
+  background: pink;
   cursor: pointer;
+}
+
+.fd-next-time { background: red; }
+
+/* -- Time carrousel */
+.fd-all-time {
+  flex: 1;
+  position: relative;
+  height: 30px;
+  line-height: 15px;
+  overflow: hidden;
+}
+
+/* -- Time item */
+.fd-all-time .fd-time {
+  position: absolute;
+  font-size: 1em;
+  transition: transform 1s, left 1s, font-size 1s, opacity 1s, z-index 0s;
+  opacity: 1;
+}
+
+.fd-all-time .fd-time.before-previous {
+  left: 0;
+  font-size: 0.8em;
+  opacity: 0;
+  transform: translateX(-50%) translateY(50%);
+}
+
+.fd-all-time .fd-time.previous {
+  left: 20%;
+  font-size: 0.8em;
+  transform: translateX(-50%) translateY(50%);
+  z-index: 5;
+}
+
+.fd-all-time .fd-time.current {
+  left: 50%;
+  font-weight: bold;
+  transform: translateX(-50%) translateY(50%);
+  z-index: 10;
+}
+
+.fd-all-time .fd-time.next {
+  left: 80%;
+  font-size: 0.8em;
+  transform: translateX(-50%) translateY(50%);
+  z-index: 5;
+}
+
+.fd-all-time .fd-time.after-next {
+  left: 100%;
+  font-size: 0.8em;
+  opacity: 0;
+  transform: translateX(-50%) translateY(50%);
 }
