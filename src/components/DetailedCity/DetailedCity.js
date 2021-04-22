@@ -123,6 +123,7 @@ export default class DetailedCity extends React.Component {
 	renderData() {
 		const { betterForecasts, error } = this.state;
 
+		// TODO: Add current weather
 		return(
 			<div className="dc-body">
 				{
@@ -130,6 +131,9 @@ export default class DetailedCity extends React.Component {
 						<p className="dc-error">Une erreur est survenue: <span>{error}</span></p>
 					) : (
 						<div className="dc-data">
+							<h3>Maintenant:</h3>
+
+							<h3>&Agrave; l&apos;avenir:</h3>
 							{ betterForecasts && (
 								<ForecastDisplay forecasts={betterForecasts}/>
 							)}
