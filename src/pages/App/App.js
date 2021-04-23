@@ -8,6 +8,7 @@ import GlobalStyles from "../../components/Themes/GlobalStyles/GlobalStyles.js";
 import useThemes from "../../components/Themes/useThemes.js";
 import ThemeSwitcher from "../../components/Themes/ThemeSwitcher/ThemeSwitcher.js";
 import Index from "../Index/Index.js";
+import Register from "../Register/Register.js";
 
 const browserHistory = createBrowserHistory();
 
@@ -28,7 +29,8 @@ export default function App() {
 					</header>
 
 					<div className="App-body">
-						<Route exact path="/" component={Index}/>
+						<Route exact path={["/", "//", "/index"]} component={Index}/>
+						<Route path="/register" component={Register}/>
 					</div>
 				</main>
 			</ThemeProvider>

@@ -3,6 +3,9 @@ const config = {
 		storageKey: "theme",
 		default: "light"
 	},
+	awApi: {
+		users: "http://localhost:8080/api/users"
+	},
 	oweather: {
 		current: "pro.openweathermap.org/data/2.5/weather",
 		forecast: "pro.openweathermap.org/data/2.5/forecast",
