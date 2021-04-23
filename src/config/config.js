@@ -1,4 +1,8 @@
 const config = {
+	themes: {
+		storageKey: "theme",
+		default: "light"
+	},
 	oweather: {
 		current: "pro.openweathermap.org/data/2.5/weather",
 		forecast: "pro.openweathermap.org/data/2.5/forecast",
