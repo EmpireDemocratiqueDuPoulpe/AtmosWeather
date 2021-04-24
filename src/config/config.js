@@ -1,10 +1,16 @@
 const config = {
+	auth: {
+		persistent: true
+	},
 	themes: {
 		storageKey: "theme",
 		default: "light"
 	},
 	awApi: {
-		users: "http://localhost:8080/api/users"
+		users: {
+			register: "http://localhost:8080/api/users",
+			login: "http://localhost:8080/api/users/login"
+		}
 	},
 	oweather: {
 		current: "pro.openweathermap.org/data/2.5/weather",

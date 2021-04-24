@@ -1,4 +1,5 @@
 import React from "react";
+import withAuth from "../../components/Auth/withAuth.js";
 import SimpleCity from "../../components/SimpleCity/SimpleCity";
 import DetailedCity from "../../components/DetailedCity/DetailedCity";
 import "./Index.css";
@@ -7,7 +8,7 @@ const DEFAULT_CITIES = [
 	"Paris", "Château-L'Abbaye", "Helsinki"
 ];
 
-export default class Index extends React.Component {
+class Index extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -51,3 +52,5 @@ export default class Index extends React.Component {
 		);
 	}
 }
+
+export default withAuth(Index);

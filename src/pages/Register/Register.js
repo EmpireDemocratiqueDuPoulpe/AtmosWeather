@@ -1,5 +1,5 @@
 import React from "react";
-import config from "../../config/config";
+import config from "../../config/config.js";
 
 export default class Register extends React.Component {
 	constructor(props) {
@@ -24,7 +24,6 @@ export default class Register extends React.Component {
 	/* It's an arrow function to keep access to {this} without binding. */
 	handleSubmit = event => {
 		event.preventDefault();
-		console.log(this.state);
 		this.registerUser();
 	}
 
@@ -46,7 +45,7 @@ export default class Register extends React.Component {
 		};
 
 		// TODO: This trigger a SyntaxError (Unexpected end of JSON input) when receiving empty response.
-		fetch(awApi.users, options)
+		fetch(awApi.users.register, options)
 			.then(response => response.json())
 			.then(json => console.log(json))
 			.catch(err => console.error(err));

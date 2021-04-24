@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { Route, Router } from "react-router";
+import { Router, Route } from "react-router";
 import { createBrowserHistory } from "history";
 import { ThemeProvider } from "styled-components";
 import Themes from "../../components/Themes/Themes.js";
@@ -9,9 +9,11 @@ import useThemes from "../../components/Themes/useThemes.js";
 import ThemeSwitcher from "../../components/Themes/ThemeSwitcher/ThemeSwitcher.js";
 import Index from "../Index/Index.js";
 import Register from "../Register/Register.js";
+import Login from "../Login/Login.js";
 
 const browserHistory = createBrowserHistory();
 
+// TODO: Fix <Redirect/> bug
 export default function App() {
 	const [ theme, toggleTheme, ready ] = useThemes();
 	const currentTheme = (theme === "light" ? Themes.light : Themes.dark);
@@ -31,6 +33,7 @@ export default function App() {
 					<div className="App-body">
 						<Route exact path={["/", "//", "/index"]} component={Index}/>
 						<Route path="/register" component={Register}/>
+						<Route path="/login" component={Login}/>
 					</div>
 				</main>
 			</ThemeProvider>
