@@ -23,7 +23,7 @@ async function loginUser(email, password) {
 		.catch(console.error);
 }
 
-function Login(props) {
+function LogIn(props) {
 	const { setToken } = useToken();
 	const [ email, setEmail ] = useState();
 	const [ password, setPassword ] = useState();
@@ -54,8 +54,8 @@ function Login(props) {
 	);
 }
 
-Login.propTypes = {
+LogIn.propTypes = {
 	history: PropTypes.object
 };
 
-export default withRouter(Login);
+export default withRouter(LogIn);

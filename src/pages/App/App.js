@@ -1,4 +1,3 @@
-import "./App.css";
 import React from "react";
 import { Router, Route } from "react-router";
 import { createBrowserHistory } from "history";
@@ -9,7 +8,8 @@ import useThemes from "../../components/Themes/useThemes.js";
 import ThemeSwitcher from "../../components/Themes/ThemeSwitcher/ThemeSwitcher.js";
 import Index from "../Index/Index.js";
 import Register from "../Register/Register.js";
-import Login from "../Login/Login.js";
+import Login from "../LogIn/LogIn.js";
+import "./App.css";
 
 const browserHistory = createBrowserHistory();
 
