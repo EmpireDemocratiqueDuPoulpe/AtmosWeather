@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import useToken from "../../components/Auth/useToken.js";
+import useUID from "../../components/Auth/useUID.js";
 import config from "../../config/config.js";
 
 async function loginUser(email, password) {
@@ -25,14 +26,16 @@ async function loginUser(email, password) {
 
 function LogIn(props) {
 	const { setToken } = useToken();
+	const { setUID } = useUID();
 	const [ email, setEmail ] = useState();
 	const [ password, setPassword ] = useState();
 
 	const handleSubmit = async event => {
 		event.preventDefault();
 
-		const token = await loginUser(email, password);
-		setToken(token.token);
+		const user = await loginUser(email, password);
+		setToken(user.token);
+		setUID(user.uid);
 
 		props.history.push("/");
 	};

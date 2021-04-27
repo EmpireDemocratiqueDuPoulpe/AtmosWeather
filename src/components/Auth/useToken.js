@@ -9,9 +9,13 @@ export default function useToken() {
 	};
 
 	const saveToken = token => {
-		storage.setItem("token", JSON.stringify(token));
+		storage.setItem("token", token);
+	};
+
+	const removeToken = () => {
+		storage.removeItem("token");
 	};
 
 	const [ token ] = useState(getToken());
-	return { setToken: saveToken, token: token };
+	return { setToken: saveToken, delToken: removeToken, token: token };
 }
