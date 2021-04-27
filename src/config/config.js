@@ -10,6 +10,9 @@ const config = {
 		users: {
 			register: "http://localhost:8080/api/users",
 			login: "http://localhost:8080/api/users/login"
+		},
+		cities: {
+			getOf: "http://localhost:8080/api/cities"
 		}
 	},
 	oweather: {

@@ -36,6 +36,21 @@
   overflow: auto;
 }
 
+/*
+.cities-wrapper .cw-cities {
+  display: grid;
+grid-template-columns: repeat(auto-fit, 250px);
+justify-content: space-evenly;
+grid-row-gap: 10px;
+/*display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: flex-start;
+flex-wrap: wrap;/
+width: 100%;
+}
+ */
+
 /* Fix for some browsers when overflow: auto and padding doesn't work well together. */
 .cities-wrapper > :last-child::after {
   content: "";
