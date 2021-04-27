@@ -108,8 +108,25 @@ export default class DetailedCity extends React.Component {
 		return (
 			<div className="detailed-city">
 				<h2 className="detailed-city-name">{name}</h2>
-				{ isLoaded ? this.renderData() : this.renderLoading() }
+				{
+					name ? (
+						<React.Fragment>
+							{ isLoaded ? this.renderData() : this.renderLoading() }
+						</React.Fragment>
+					) : (
+						<React.Fragment>
+							{ this.renderWaitingForClick() }
+						</React.Fragment>
+					)
+				}
 			</div>
+		);
+	}
+
+	// TODO: Better loading (gif, animation)
+	renderWaitingForClick() {
+		return (
+			<p>Cliquez sur une ville pour voir les pr&eacute;visions hebdomadaire.</p>
 		);
 	}
 
