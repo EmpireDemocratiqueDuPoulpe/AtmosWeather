@@ -13,7 +13,9 @@ export default class SimpleCity extends React.Component {
 		this.state = {
 			isLoaded: false,
 			city: null,
-			error: null
+			error: null,
+			menuOpened: false,
+			deleted: false
 		};
 	}
 
@@ -29,6 +31,31 @@ export default class SimpleCity extends React.Component {
 		if (isLoaded) {
 			onClick(name, city);
 		}
+	}
+
+	/* It's an arrow function to keep access to {this} without binding. */
+	handleDeletion = () => {
+		const { uid, name } = this.props;
+		const { awApi } = config;
+		const options = {
+			method: "DELETE",
+			headers: {
+				"Content-type": "application/json",
+				Accept: "application/json"
+			},
+			body: JSON.stringify({ uid: uid, name: name })
+		};
+
+		fetch(awApi.cities.delete, options)
+			.then(response => response.json())
+			.then(json => {
+				if (json.code === 202) {
+					this.setState({ deleted: true });
+				} else {
+					console.error(json);
+				}
+			})
+			.catch(console.error);
 	}
 
 	/*********************************
@@ -50,13 +77,28 @@ export default class SimpleCity extends React.Component {
 	}
 
 	render() {
-		const { isLoaded } = this.state;
+		const { isLoaded, menuOpened, deleted } = this.state;
 		const { name } = this.props;
+
+		if (deleted) return null;
 
 		return (
 			<div className="simple-city" onClick={this.handleClick}>
 				<h2 className="simple-city-name">{name}</h2>
 				{ isLoaded ? this.renderData() : this.renderLoading() }
+				<div className={`simple-city-delete ${menuOpened ? "menuOpened" : "menuClosed"}`}>
+					<label className="scd-button">
+						<input className="scd-checkbox" type="checkbox" onChange={e => this.setState({ menuOpened: e.target.checked })}/>
+					</label>
+
+					<div className={`scd-menu ${menuOpened ? "open" : "close"}`}>
+						<ul>
+							<li className="scd-menu-item" onClick={this.handleDeletion}>
+								<span>☻</span> Supprimer
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
 		);
 	}
@@ -96,6 +138,7 @@ export default class SimpleCity extends React.Component {
 }
 
 SimpleCity.propTypes = {
+	uid: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
 	onClick: PropTypes.func
 };

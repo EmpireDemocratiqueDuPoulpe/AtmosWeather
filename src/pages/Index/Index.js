@@ -53,6 +53,7 @@ class Index extends React.Component {
 	}
 
 	renderData() {
+		const { uid } = this.props;
 		const { cities, error } = this.state;
 
 		return (
@@ -67,7 +68,7 @@ class Index extends React.Component {
 									<React.Fragment>
 										{
 											cities.map((city, index) => {
-												return <SimpleCity key={index} name={city.name} onClick={this.handleCityClick}/>;
+												return <SimpleCity key={index} uid={uid} name={city.name} onClick={this.handleCityClick}/>;
 											})
 										}
 									</React.Fragment>
