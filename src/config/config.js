@@ -12,6 +12,7 @@ const config = {
 			login: "http://localhost:8080/api/users/login"
 		},
 		cities: {
+			add: "http://localhost:8080/api/cities",
 			getOf: "http://localhost:8080/api/cities",
 			delete: "http://localhost:8080/api/cities"
 		}

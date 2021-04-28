@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import withAuth from "../../components/Auth/withAuth.js";
 import SimpleCity from "../../components/SimpleCity/SimpleCity";
+import AddSimpleCity from "../../components/SimpleCity/AddSimpleCity/AddSimpleCity.js";
 import DetailedCity from "../../components/DetailedCity/DetailedCity";
 import "./Index.css";
 import config from "../../config/config";
@@ -26,6 +27,14 @@ class Index extends React.Component {
 		if (name !== undefined && weather !== undefined) {
 			this.detailedCity.displayNewCity(name, weather);
 		}
+	}
+
+	/* It's an arrow function to keep access to {this} without binding. */
+	addCity = name => {
+		const { cities } = this.state;
+		cities.push({ name: name });
+
+		this.setState({ cities: cities });
 	}
 
 	/*********************************
@@ -71,6 +80,7 @@ class Index extends React.Component {
 												return <SimpleCity key={index} uid={uid} name={city.name} onClick={this.handleCityClick}/>;
 											})
 										}
+										<AddSimpleCity uid={uid} onCityAdd={this.addCity}/>
 									</React.Fragment>
 								) : (
 									<p>Aucune ville trouv&eacute;e</p>

@@ -1,0 +1,21 @@
+/* ---- Add Simple City ------------------------- */
+/* -- Container */
+.add-simple-city {
+  position: relative;
+  text-align: center;
+  width: 250px;
+  padding: 10px 0;
+  background: rgba(147, 64, 243, 0.4);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.add-simple-city:hover { background: rgba(147, 64, 243, 0.8); }
+
+/* -- Disable idle mode button */
+.asc-show-form-btn {
+  width: 100%;
+  height: 100%;
+}
+
+.asc-show-form-btn p { margin: 0; }
