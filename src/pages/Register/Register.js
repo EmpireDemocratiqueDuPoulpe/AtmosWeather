@@ -1,7 +1,8 @@
 import React from "react";
+import withAuth from "../../components/Auth/withAuth.js";
 import Users from "../../global/Users.js";
 
-export default class Register extends React.Component {
+class Register extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -63,3 +64,5 @@ export default class Register extends React.Component {
 		);
 	}
 }
+
+export default withAuth(Register, true);

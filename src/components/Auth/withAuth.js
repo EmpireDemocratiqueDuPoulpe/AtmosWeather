@@ -1,10 +1,15 @@
 import { Redirect } from "react-router";
-import useToken from "./useToken.js";
+import useAuth from "./useAuth.js";
 
-const withAuth = Component => {
+const withAuth = (Component, reverse = false) => {
 	const AuthRoute = props => {
-		const { token } = useToken();
-		return token ? <Component {...props}/> : <Redirect to="/login"/>;
+		const { token, uid } = useAuth();
+		let isAuth = (token.value && uid.value);
+		const redirectURL = reverse ? "/" : "/login";
+
+		if (reverse) isAuth = !isAuth;
+
+		return isAuth ? <Component {...props}/> : <Redirect to={redirectURL}/>;
 	};
 
 	return AuthRoute;

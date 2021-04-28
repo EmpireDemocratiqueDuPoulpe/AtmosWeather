@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
-import useToken from "../../components/Auth/useToken.js";
-import useUID from "../../components/Auth/useUID.js";
+import useAuth from "../../components/Auth/useAuth.js";
+import withAuth from "../../components/Auth/withAuth.js";
 import Users from "../../global/Users.js";
 
 function LogIn(props) {
-	const { setToken } = useToken();
-	const { setUID } = useUID();
+	const { token, uid, username } = useAuth();
 	const [ email, setEmail ] = useState();
 	const [ password, setPassword ] = useState();
 
@@ -16,8 +15,9 @@ function LogIn(props) {
 
 		Users.login(email, password)
 			.then(user => {
-				setToken(user.token);
-				setUID(user.uid);
+				token.set(user.token);
+				uid.set(user.uid);
+				username.set(user.username);
 				props.history.push("/");
 			})
 			.catch(console.error);
@@ -44,4 +44,4 @@ LogIn.propTypes = {
 	history: PropTypes.object
 };
 
-export default withRouter(LogIn);
+export default withRouter(withAuth(LogIn, true));
