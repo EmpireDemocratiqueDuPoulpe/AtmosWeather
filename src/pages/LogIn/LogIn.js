@@ -3,26 +3,7 @@ import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import useToken from "../../components/Auth/useToken.js";
 import useUID from "../../components/Auth/useUID.js";
-import config from "../../config/config.js";
-
-async function loginUser(email, password) {
-	const { awApi } = config;
-	const options = {
-		method: "post",
-		headers: {
-			"Content-Type": "application/json",
-			Accept: "application/json"
-		},
-		body: JSON.stringify({
-			email: email,
-			password: password
-		})
-	};
-
-	return fetch(awApi.users.login, options)
-		.then(response => response.json())
-		.catch(console.error);
-}
+import Users from "../../global/Users.js";
 
 function LogIn(props) {
 	const { setToken } = useToken();
@@ -33,11 +14,13 @@ function LogIn(props) {
 	const handleSubmit = async event => {
 		event.preventDefault();
 
-		const user = await loginUser(email, password);
-		setToken(user.token);
-		setUID(user.uid);
-
-		props.history.push("/");
+		Users.login(email, password)
+			.then(user => {
+				setToken(user.token);
+				setUID(user.uid);
+				props.history.push("/");
+			})
+			.catch(console.error);
 	};
 
 	return (

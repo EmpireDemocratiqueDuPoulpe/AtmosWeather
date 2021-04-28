@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Weather from "../Meteorology/Weather/Weather.js";
+import Cities from "../../global/Cities.js";
+import Weather from "../../global/Weather.js";
+import WeatherDisplay from "../Meteorology/Weather/Weather.js";
 import Temperature from "../Meteorology/Temperature/Temperature.js";
 import Wind from "../Meteorology/Wind/Wind.js";
-import config from "../../config/config.js";
 import "./SimpleCity.css";
 
 export default class SimpleCity extends React.Component {
@@ -36,23 +37,13 @@ export default class SimpleCity extends React.Component {
 	/* It's an arrow function to keep access to {this} without binding. */
 	handleDeletion = () => {
 		const { uid, name } = this.props;
-		const { awApi } = config;
-		const options = {
-			method: "DELETE",
-			headers: {
-				"Content-type": "application/json",
-				Accept: "application/json"
-			},
-			body: JSON.stringify({ uid: uid, name: name })
-		};
 
-		fetch(awApi.cities.delete, options)
-			.then(response => response.json())
-			.then(json => {
-				if (json.code === 202) {
+		Cities.delete(uid, name)
+			.then(response => {
+				if (response.code === 202) {
 					this.setState({ deleted: true });
 				} else {
-					console.error(json);
+					console.error(response.message);
 				}
 			})
 			.catch(console.error);
@@ -64,15 +55,9 @@ export default class SimpleCity extends React.Component {
 
 	componentDidMount() {
 		const { name } = this.props;
-		const { oweather } = config;
-		const options = { headers: { Accept: "application/json" } };
 
-		fetch(
-			`https://${oweather.current}?q=${name}&units=${oweather.units}&lang=${oweather.lang}&appid=${oweather.key}`,
-			options
-		)
-			.then(response => response.json())
-			.then(json => this.setState({ city: json, isLoaded: true }))
+		Weather.getCurrent(name)
+			.then(response => this.setState({ city: response, isLoaded: true }))
 			.catch(err => this.setState({ error: err }));
 	}
 
@@ -126,7 +111,7 @@ export default class SimpleCity extends React.Component {
 						<p className="sc-error">Une erreur est survenue: <span>{error}</span></p>
 					) : (
 						<div className="sc-data">
-							<Weather weather={city.weather}/>
+							<WeatherDisplay weather={city.weather}/>
 							{ showTemperature && <Temperature value={main.temp} feelsLike={main.feels_like}/> }
 							{ showWind && <Wind speed={wind.speed} deg={wind.deg}/> }
 						</div>

@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { DateTime } from "luxon";
-import ForecastDisplay from "./ForecastDisplay/ForecastDisplay.js";
+import Weather from "../../global/Weather.js";
 import config from "../../config/config.js";
+import ForecastDisplay from "./ForecastDisplay/ForecastDisplay.js";
 
 const DEFAULT_CURRENT_CITY = { name: "", weather: null };
 
@@ -33,16 +34,10 @@ export default class DetailedCity extends React.Component {
 
 	getForecast() {
 		const { currentCity: { name } } = this.state;
-		const { oweather } = config;
-		const options = { headers: { Accept: "application/json" } };
 
-		fetch(
-			`https://${oweather.forecast}?q=${name}&units=${oweather.units}&lang=${oweather.lang}&appid=${oweather.key}`,
-			options
-		)
-			.then(response => response.json())
-			.then(json => {
-				this.setState({ forecast: json, isLoaded: true }, () => {
+		Weather.getWeekForecast(name)
+			.then(response => {
+				this.setState({ forecast: response, isLoaded: true }, () => {
 					this.restructureForecast();
 				});
 			})

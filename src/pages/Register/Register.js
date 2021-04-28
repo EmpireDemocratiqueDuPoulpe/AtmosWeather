@@ -1,5 +1,5 @@
 import React from "react";
-import config from "../../config/config.js";
+import Users from "../../global/Users.js";
 
 export default class Register extends React.Component {
 	constructor(props) {
@@ -29,26 +29,10 @@ export default class Register extends React.Component {
 
 	registerUser() {
 		const { username, email, password1, password2 } = this.state;
-		const { awApi } = config;
-		const options = {
-			method: "post",
-			headers: {
-				"Content-Type": "application/json",
-				Accept: "application/json"
-			},
-			body: JSON.stringify({
-				username: username,
-				email: email,
-				password1: password1,
-				password2: password2
-			})
-		};
 
-		// TODO: This trigger a SyntaxError (Unexpected end of JSON input) when receiving empty response.
-		fetch(awApi.users.register, options)
-			.then(response => response.json())
-			.then(json => console.log(json))
-			.catch(err => console.error(err));
+		Users.register(username, email, password1, password2)
+			.then(response => console.log(response))
+			.catch(console.error);
 	}
 
 	/*********************************

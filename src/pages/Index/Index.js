@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import withAuth from "../../components/Auth/withAuth.js";
+import Cities from "../../global/Cities.js";
 import SimpleCity from "../../components/SimpleCity/SimpleCity";
 import AddSimpleCity from "../../components/SimpleCity/AddSimpleCity/AddSimpleCity.js";
 import DetailedCity from "../../components/DetailedCity/DetailedCity";
 import "./Index.css";
-import config from "../../config/config";
 
 class Index extends React.Component {
 	constructor(props) {
@@ -43,11 +43,8 @@ class Index extends React.Component {
 
 	componentDidMount() {
 		const { uid } = this.props;
-		const { awApi } = config;
-		const options = { headers: { Accept: "application/json" } };
 
-		fetch(`${awApi.cities.getOf}/${uid}`, options)
-			.then(response => response.json())
+		Cities.getOf(uid)
 			.then(json => this.setState({ cities: json, isLoaded: true }))
 			.catch(err => this.setState({ error: err }));
 	}
