@@ -3,6 +3,16 @@ import PropTypes from "prop-types";
 import { DateTime } from "luxon";
 import Weather from "../../global/Weather.js";
 import config from "../../config/config.js";
+import WeatherDisplay from "../Meteorology/Weather/Weather.js";
+import Temperature from "../Meteorology/Temperature/Temperature.js";
+import MinMaxTemperature from "../Meteorology/MinMaxTemperature/MinMaxTemperature.js";
+import Humidity from "../Meteorology/Humidity/Humidity.js";
+import Pressure from "../Meteorology/Pressure/Pressure.js";
+import Cloudiness from "../Meteorology/Cloudiness/Cloudiness.js";
+import Visibility from "../Meteorology/Visibility/Visibility.js";
+import Precipitation from "../Meteorology/Precipitation/Precipitation.js";
+import RainSnow from "../Meteorology/RainSnow/RainSnow.js";
+import Wind from "../Meteorology/Wind/Wind.js";
 import ForecastDisplay from "./ForecastDisplay/ForecastDisplay.js";
 import "./DetailedCity.css";
 
@@ -134,7 +144,7 @@ export default class DetailedCity extends React.Component {
 	}
 
 	renderData() {
-		const { betterForecasts, error } = this.state;
+		const { currentCity: { weather }, betterForecasts, error } = this.state;
 
 		// TODO: Add current weather
 		return(
@@ -145,7 +155,26 @@ export default class DetailedCity extends React.Component {
 					) : (
 						<div className="dc-data">
 							<h3>Maintenant:</h3>
+							<div className="dc-current">
+								<WeatherDisplay weather={weather.weather}/>
 
+								<Temperature value={weather.main.temp} feelsLike={weather.main.feels_like}/>
+								<MinMaxTemperature min={weather.main.temp_min} max={weather.main.temp_max}/>
+
+								<Wind speed={weather.wind.speed} deg={weather.wind.deg}/>
+
+								<Humidity value={weather.main.humidity}/>
+								<Pressure value={weather.main.pressure}/>
+
+								<Cloudiness value={weather.clouds.all}/>
+								<Visibility inMeters={weather.visibility} toKilometersAt={1000}/>
+
+								<Precipitation value={weather.pop}/>
+								<RainSnow
+									rainLevel={weather.rain ? weather.rain["3h"] : null}
+									snowLevel={weather.snow ? weather.snow["3h"] : null}
+								/>
+							</div>
 							<h3>&Agrave; l&apos;avenir:</h3>
 							{ betterForecasts && (
 								<ForecastDisplay forecasts={betterForecasts}/>
