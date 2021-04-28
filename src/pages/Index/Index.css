@@ -41,7 +41,7 @@
 }
 
 /* Fix for some browsers when overflow: auto and padding doesn't work well together. */
-.cities-wrapper > :last-child::after {
+.cw-overflow-fix > :last-child::after {
   content: "";
   position: absolute;
   bottom: -10px;
