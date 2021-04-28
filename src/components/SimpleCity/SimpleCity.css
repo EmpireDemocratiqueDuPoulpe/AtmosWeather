@@ -15,9 +15,8 @@
 }
 
 /* -- City name */
-.simple-city-name {
-  margin: 0 0 10px 0;
-}
+.simple-city-name { margin: 0 0 10px 0; }
+.simple-city-name::first-letter { text-transform: uppercase; }
 
 /* -- Delete */
 .simple-city-delete {

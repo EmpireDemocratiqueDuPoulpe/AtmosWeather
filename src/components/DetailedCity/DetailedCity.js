@@ -4,6 +4,7 @@ import { DateTime } from "luxon";
 import Weather from "../../global/Weather.js";
 import config from "../../config/config.js";
 import ForecastDisplay from "./ForecastDisplay/ForecastDisplay.js";
+import "./DetailedCity.css";
 
 const DEFAULT_CURRENT_CITY = { name: "", weather: null };
 
