@@ -96,7 +96,9 @@ class Index extends React.Component {
 		return (
 			<div className="sky">
 				<div className="cities-wrapper">
-					{ isLoaded ? this.renderData() : this.renderLoading() }
+					<div className="cw-overflow-fix">
+						{ isLoaded ? this.renderData() : this.renderLoading() }
+					</div>
 				</div>
 
 				<div className="city-detail">
