@@ -35,7 +35,16 @@ export default class SimpleCity extends React.Component {
 	}
 
 	/* It's an arrow function to keep access to {this} without binding. */
-	handleDeletion = () => {
+	handleMenuClick = event => {
+		event.stopPropagation();
+		const { menuOpened } = this.state;
+
+		this.setState({ menuOpened: !menuOpened });
+	}
+
+	/* It's an arrow function to keep access to {this} without binding. */
+	handleDeletion = event => {
+		event.stopPropagation();
 		const { uid, name } = this.props;
 
 		Cities.delete(uid, name)
@@ -72,8 +81,7 @@ export default class SimpleCity extends React.Component {
 				<h2 className="simple-city-name">{name}</h2>
 				{ isLoaded ? this.renderData() : this.renderLoading() }
 				<div className={`simple-city-delete ${menuOpened ? "menuOpened" : "menuClosed"}`}>
-					<label className="scd-button">
-						<input className="scd-checkbox" type="checkbox" onChange={e => this.setState({ menuOpened: e.target.checked })}/>
+					<label className="scd-button" onClick={this.handleMenuClick}>
 					</label>
 
 					<div className={`scd-menu ${menuOpened ? "open" : "close"}`}>
@@ -111,9 +119,10 @@ export default class SimpleCity extends React.Component {
 						<p className="sc-error">Une erreur est survenue: <span>{error}</span></p>
 					) : (
 						<div className="sc-data">
-							<WeatherDisplay weather={city.weather}/>
+							<WeatherDisplay weather={city.weather}>
+								{ showWind && <Wind speed={wind.speed} deg={wind.deg}/> }
+							</WeatherDisplay>
 							{ showTemperature && <Temperature value={main.temp} feelsLike={main.feels_like}/> }
-							{ showWind && <Wind speed={wind.speed} deg={wind.deg}/> }
 						</div>
 					)
 				}

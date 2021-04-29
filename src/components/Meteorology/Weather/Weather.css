@@ -1,6 +1,6 @@
 /* ---- Weather --------------------------------- */
 /* -- Container */
-.weather > div {
+.weather {
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,13 +1,16 @@
+import React from "react";
 import PropTypes from "prop-types";
 import "./Weather.css";
 
 const Weather = (props) => (
 	<div className="weather">
 		{props.weather && (
-			<div>
-				<div className="weather-icon"/>
+			<React.Fragment>
+				<div className="weather-icon">
+					{ props.children ? (<React.Fragment>{props.children}</React.Fragment>) : null }
+				</div>
 				<h3 className="weather-text">{props.weather[0].description}</h3>
-			</div>
+			</React.Fragment>
 		)}
 	</div>
 );
@@ -20,7 +23,8 @@ Weather.propTypes = {
 			description: PropTypes.string,
 			icon: PropTypes.string
 		})
-	).isRequired
+	).isRequired,
+	children: PropTypes.any
 };
 
 Weather.defaultProps = { weather: null };
