@@ -169,7 +169,7 @@ export default class DetailedCity extends React.Component {
 								<Cloudiness value={weather.clouds.all}/>
 								<Visibility inMeters={weather.visibility} toKilometersAt={1000}/>
 
-								<Precipitation value={weather.pop}/>
+								{weather.pop ? (<Precipitation value={weather.pop}/>) : null}
 								<RainSnow
 									rainLevel={weather.rain ? weather.rain["3h"] : null}
 									snowLevel={weather.snow ? weather.snow["3h"] : null}

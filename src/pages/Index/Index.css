@@ -19,29 +19,22 @@
 .cities-wrapper {
   box-sizing: border-box;
   flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 15px;
   height: 100%;
   margin-right: 30px;
-  background: #F7F7F7;
+  padding: 10px 10px 0 10px;
   border-radius: 15px;
   overflow-y: scroll;
 }
 
-.cw-overflow-fix {
-  box-sizing: border-box;
-  display: grid;
-  /* 250px is the width of a .simple-city element */
-  grid-template-columns: repeat(auto-fit, 250px);
-  justify-content: space-evenly;
-  grid-row-gap: 10px;
-  width: 100%;
-  height: 100%;
-  padding: 10px 10px 0 10px;
-  border-radius: 15px;
-  overflow: visible;
-}
-
 /* Fix for some browsers when overflow: auto and padding doesn't work well together. */
-.cw-overflow-fix > :last-child::after {
+.cities-wrapper > :last-child::after {
   content: "";
   position: absolute;
   bottom: -10px;
@@ -56,4 +49,5 @@
   height: 100%;
   background: #F7F7F7;
   border-radius: 15px;
+  overflow: auto;
 }

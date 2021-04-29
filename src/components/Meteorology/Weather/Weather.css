@@ -9,15 +9,29 @@
 
 /* -- Icon */
 .weather-icon {
-  width: 200px;
-  height: 200px;
+  width: 100%;
   background: hotpink;
+}
+
+.weather-icon::before {
+  content: "";
+  float: left;
+  padding-bottom: 100%;
+}
+
+.weather-icon::after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 /* -- Text */
 .weather-text {
   font-size: 1em;
   margin: 10px 0 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .weather-text::first-letter {

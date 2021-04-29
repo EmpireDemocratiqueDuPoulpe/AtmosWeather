@@ -5,6 +5,8 @@ import Weather from "../../global/Weather.js";
 import WeatherDisplay from "../Meteorology/Weather/Weather.js";
 import Temperature from "../Meteorology/Temperature/Temperature.js";
 import Wind from "../Meteorology/Wind/Wind.js";
+import { ReactComponent as MoreIcon } from "../../assets/images/more_horiz_black_24dp.svg";
+import { ReactComponent as DeleteIcon } from "../../assets/images/remove_circle_black_24dp.svg";
 import "./SimpleCity.css";
 
 export default class SimpleCity extends React.Component {
@@ -15,6 +17,7 @@ export default class SimpleCity extends React.Component {
 			isLoaded: false,
 			city: null,
 			error: null,
+			isPressed: false,
 			menuOpened: false,
 			deleted: false
 		};
@@ -25,9 +28,24 @@ export default class SimpleCity extends React.Component {
 	 *********************************/
 
 	/* It's an arrow function to keep access to {this} without binding. */
+	handlePress = () => {
+		this.setState({ isPressed: true });
+	}
+
+	/* It's an arrow function to keep access to {this} without binding. */
+	handleMouseLeave = () => {
+		const { isPressed } = this.state;
+
+		if (isPressed) {
+			this.setState({ isPressed: false });
+		}
+	}
+
 	handleClick = () => {
 		const { isLoaded, city } = this.state;
 		const { name, onClick } = this.props;
+
+		this.setState({ isPressed: false });
 
 		if (isLoaded) {
 			onClick(name, city);
@@ -39,7 +57,7 @@ export default class SimpleCity extends React.Component {
 		event.stopPropagation();
 		const { menuOpened } = this.state;
 
-		this.setState({ menuOpened: !menuOpened });
+		this.setState({ menuOpened: !menuOpened, isPressed: false });
 	}
 
 	/* It's an arrow function to keep access to {this} without binding. */
@@ -71,23 +89,30 @@ export default class SimpleCity extends React.Component {
 	}
 
 	render() {
-		const { isLoaded, menuOpened, deleted } = this.state;
+		const { isLoaded, menuOpened, isPressed, deleted } = this.state;
 		const { name } = this.props;
 
 		if (deleted) return null;
 
 		return (
-			<div className="simple-city" onClick={this.handleClick}>
+			<div
+				className={`simple-city ${isPressed  ? "pressed" : ""}`}
+				onMouseDown={this.handlePress}
+				onMouseLeave={this.handleMouseLeave}
+				onClick={this.handleClick}
+			>
 				<h2 className="simple-city-name">{name}</h2>
 				{ isLoaded ? this.renderData() : this.renderLoading() }
 				<div className={`simple-city-delete ${menuOpened ? "menuOpened" : "menuClosed"}`}>
-					<label className="scd-button" onClick={this.handleMenuClick}>
-					</label>
+					<div className="scd-button" onClick={this.handleMenuClick}>
+						<MoreIcon/>
+					</div>
 
 					<div className={`scd-menu ${menuOpened ? "open" : "close"}`}>
 						<ul>
-							<li className="scd-menu-item" onClick={this.handleDeletion}>
-								<span>☻</span> Supprimer
+							<li className="scd-menu-item red-hover" onClick={this.handleDeletion}>
+								<DeleteIcon className="scd-menu-item-icon"/>
+								<span>Supprimer</span>
 							</li>
 						</ul>
 					</div>

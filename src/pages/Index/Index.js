@@ -95,13 +95,11 @@ class Index extends React.Component {
 
 		return (
 			<div className="sky">
-				<div className="cities-wrapper">
-					<div className="cw-overflow-fix">
-						{ isLoaded ? this.renderData() : this.renderLoading() }
-					</div>
+				<div className="cities-wrapper custom-scrollbars">
+					{ isLoaded ? this.renderData() : this.renderLoading() }
 				</div>
 
-				<div className="city-detail">
+				<div className="city-detail custom-scrollbars">
 					<DetailedCity onRef={ ref => this.detailedCity = ref }/>
 				</div>
 			</div>
