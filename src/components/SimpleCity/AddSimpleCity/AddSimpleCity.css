@@ -3,14 +3,9 @@
 .add-simple-city {
   box-sizing: border-box;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   /* 15px is the gap between elements in .cities-wrapper */
   width: calc(20% - 15px);
-  padding: 10px 0;
+  margin: 0 2px 2px 0;
   border: 3px #F7F7F7 dashed;
   border-radius: 15px;
   transition: background-color 50ms ease-in;
@@ -32,11 +27,12 @@
 }
 
 .add-simple-city.expand {
-  width: calc(40% - 15px);
   background: #F7F7F7;
+  box-shadow: 3px 3px 0 3px #E7E6E6;
+  -webkit-box-shadow: 3px 3px 0 3px #E7E6E6;
+  -moz-box-shadow: 3px 3px 0 3px #E7E6E6;
   cursor: auto;
 }
-.add-simple-city.expand::before { padding-bottom: 47%; }
 
 .asc-content {
   position: absolute;
@@ -46,9 +42,12 @@
   left: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  padding: 10px;
 }
+
+.add-simple-city.expand .asc-content { position: relative; }
 
 /* -- Disable idle mode button */
 .asc-show-form-btn {
@@ -67,24 +66,127 @@
 }
 
 /* -- Form */
-.asc-form-field {
+.asc-content form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  /*height: 30px;*/
+  width: 100%
 }
 
-.asc-form-field .custom-input {
-  margin-right: 0;
-  margin-left: 0;
+.asc-form-field {
+  margin-bottom: 10px;
 }
 
-.asc-form-field > label {
-  display: block;
-  height: 17px;
-  background: #3B3A3A;
+.asc-form-field input {
+  text-align: center;
+  font-size: 1.5em;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 2px #3B3A3A solid;
+  font-weight: bold;
+}
+
+.asc-form-field input::placeholder {
+  font-size: 0.7em;
+}
+
+.asc-form-field input:focus,
+.asc-form-field input:not(:placeholder-shown) {
+  border-color: #09c6f9;
+  outline: none;
+}
+
+.asc-add-button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 85% !important;
+  margin: 0 1px 1px 0;
+  background: #14A76C;
+  border-radius: 15px;
+  box-shadow: 2px 2px 0 2px #04965B;
+  -webkit-box-shadow: 2px 2px 0 2px #04965B;
+  -moz-box-shadow: 2px 2px 0 2px #04965B;
+  cursor: pointer;
+  transition: background-color 50ms ease-in;
+}
+
+.asc-add-button:hover {
+  background: #0A9D62;
+  box-shadow: 2px 2px 0 2px #008C51;
+  -webkit-box-shadow: 2px 2px 0 2px #008C51;
+  -moz-box-shadow: 2px 2px 0 2px #008C51;
+}
+
+.asc-add-button:active {
+  margin: 1px 0 0 1px;
+  box-shadow: 1px 1px 0 1px #008C51;
+  -webkit-box-shadow: 1px 1px 0 1px #008C51;
+  -moz-box-shadow: 1px 1px 0 1px #008C51;
+}
+
+.asc-add-button input { display: none; }
+
+.asc-add-button-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.asc-add-button-content svg {
+  width: 40%;
+  height: 40%;
+  fill: #00723C;
+  transition: fill 50ms ease-in;
+}
+
+.asc-add-button-content span {
+  font-size: 1.1em;
+  color: #00723C;
+  font-weight: bold;
+  transition: color 50ms ease-in;
+}
+
+.asc-add-button-content:hover svg { fill: #006832; }
+.asc-add-button-content:hover span { color: #006832; }
+
+.asc-cancel {
+  width: 85%;
+  margin: 10px 1px 1px 0;
+  background: #ED2939;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 2px 2px 0 2px #DD1828;
+  -webkit-box-shadow: 2px 2px 0 2px #DD1828;
+  -moz-box-shadow: 2px 2px 0 2px #DD1828;
+  transition: background-color 50ms ease-in;
+  -webkit-appearance: none;
   cursor: pointer;
 }
 
-.asc-form-field label input { display: none; }
+.asc-cancel:focus { outline: none; }
+
+.asc-cancel:hover {
+  background: #E31F2F;
+  box-shadow: 2px 2px 0 2px #D30E1E;
+  -webkit-box-shadow: 2px 2px 0 2px #D30E1E;
+  -moz-box-shadow: 2px 2px 0 2px #D30E1E;
+}
+
+.asc-cancel:active {
+  margin: 11px 0 0 1px;
+  box-shadow: 1px 1px 0 1px #D30E1E;
+  -webkit-box-shadow: 1px 1px 0 1px #D30E1E;
+  -moz-box-shadow: 1px 1px 0 1px #D30E1E;
+}

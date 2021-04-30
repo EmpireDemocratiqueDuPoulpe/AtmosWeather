@@ -6,7 +6,7 @@ const Weather = (props) => (
 	<div className="weather">
 		{props.weather && (
 			<React.Fragment>
-				<div className="weather-icon">
+				<div className="weather-icon square-keep-ratio">
 					{ props.children ? (<React.Fragment>{props.children}</React.Fragment>) : null }
 				</div>
 				<h3 className="weather-text">{props.weather[0].description}</h3>

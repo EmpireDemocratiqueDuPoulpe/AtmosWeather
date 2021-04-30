@@ -16,7 +16,7 @@ code {
 }
 
 /* -- Inputs */
-.custom-input {
+/*.custom-input {
   position: relative;
   vertical-align: top;
   display: inline-block;
@@ -147,7 +147,7 @@ code {
   opacity: 0;
   -webkit-transform: translate3d(0, -50%, 0);
   transform: translate3d(0, -50%, 0);
-}
+}*/
 
 /* -- Special classes */
 .no-padding { padding: 0 !important; }
@@ -158,4 +158,17 @@ code {
 .custom-scrollbars {
   scrollbar-width: thin;
   scrollbar-color: transparent gray;
+}
+
+.square-keep-ratio { width: 100%; }
+.square-keep-ratio::before {
+  content: "";
+  float: left;
+  padding-bottom: 100%;
+}
+
+.square-keep-ratio::after {
+  content: "";
+  display: table;
+  clear: both;
 }

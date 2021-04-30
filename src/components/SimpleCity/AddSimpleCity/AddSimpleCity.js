@@ -6,7 +6,7 @@ import "./AddSimpleCity.css";
 
 function AddSimpleCity(props) {
 	const { uid, onCityAdd } = props;
-	const [ idle, setIdle ] = useState(false);
+	const [ idle, setIdle ] = useState(true);
 	const [ city, setCity ] = useState();
 
 	const handleSubmit = async event => {
@@ -38,24 +38,23 @@ function AddSimpleCity(props) {
 					) : (
 						<form onSubmit={handleSubmit}>
 							<div className="asc-form-field">
-								<span className="custom-input isao">
-									<input
-										className="asc-city-name"
-										type="text"
-										id="cityName"
-										onChange={e => setCity(e.target.value)}
-										minLength={1}
-									/>
-									<label htmlFor="cityName" data-content="Nom de la ville">
-										<span>Nom de la ville</span>
-									</label>
-								</span>
-								<label>
-									<input type="submit" value="Ajouter"/>
-									<AddIcon/>
-								</label>
+								<input
+									className="asc-city-name"
+									type="text"
+									placeholder="Nom de la ville"
+									onChange={e => setCity(e.target.value)}
+									minLength={1}
+								/>
 							</div>
-							<input type="button" value="Annuler" onClick={() => setIdle(true)}/>
+
+							<label className="asc-add-button square-keep-ratio">
+								<input type="submit"/>
+								<div className="asc-add-button-content">
+									<AddIcon/>
+									<span>Ajouter</span>
+								</div>
+							</label>
+							<input className="asc-cancel" type="button" value="Annuler" onClick={() => setIdle(true)}/>
 						</form>
 					)
 				}
