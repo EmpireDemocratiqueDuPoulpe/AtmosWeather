@@ -1,0 +1,73 @@
+/* ---- Input field ----------------------------- */
+/* -- Container */
+.input-field {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.input-field > label, .input-field > input {
+  display: block;
+  white-space: nowrap;
+}
+
+.input-field > label:not(:first-child):not(:last-child),
+.input-field > input:not(:first-child):not(:last-child) { border-radius: 0; }
+
+.input-field > label:first-child,
+.input-field > input:first-child { border-radius: 6px 0 0 6px; }
+
+.input-field > label:last-child,
+.input-field > input:last-child { border-radius: 0 6px 6px 0; }
+
+.input-field > label:not(:first-child),
+.input-field > input:not(:first-child) { margin-left: -1px; }
+
+/* -- Label */
+.input-field label {
+  text-align: center;
+  line-height: 25px;
+  font-size: 14px;
+  padding: 8px 12px;
+  background: #EEF4FF;
+  color: #99A3BA;
+  border: thin #CDD9ED solid;
+  transition: background 300ms ease, border 300ms ease, color 300ms ease;
+  cursor: text;
+}
+
+.input-field:focus-within > label {
+  background: #678EFE;
+  color: #FFFFFF;
+  border-color: #275EFE;
+}
+
+/* -- Input */
+.input-field input {
+  position: relative;
+  flex: 1 1 auto;
+  display: block;
+  width: 1%;
+  line-height: 25px;
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 8px 16px;
+  background: #FFFFFF;
+  color: #99A3BA;
+  border: thin #CDD9ED solid;
+  border-radius: 6px;
+  font-weight: 500;
+  font-family: inherit;
+  transition: border 300ms ease;
+  z-index: 1;
+  -webkit-appearance: none;
+}
+
+.input-field input:focus {
+  outline: none;
+  border-color: #275EFE;
+}
+
+.input-field input::placeholder { color: #CBD1DC; }

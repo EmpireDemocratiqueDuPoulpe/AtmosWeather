@@ -17,7 +17,13 @@ code {
     monospace;
 }
 
-/* -- Inputs */
+/* -- Links */
+.link {
+  color: #969696;
+  text-decoration: none;
+}
+
+.link.red { color: #ED2939; }
 
 /* -- Special classes */
 .normal-font {

@@ -1,68 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
+import { Redirect, Link } from "react-router-dom";
 import withAuth from "../../components/Auth/withAuth.js";
 import Users from "../../global/Users.js";
+import InputField from "../../components/InputField/InputField.js";
+import "./Register.css";
 
-class Register extends React.Component {
-	constructor(props) {
-		super(props);
+function Register() {
+	const [ username, setUsername ] = useState();
+	const [ email, setEmail ] = useState();
+	const [ password1, setPassword1 ] = useState();
+	const [ password2, setPassword2 ] = useState();
+	const [ redirect, setRedirect ] = useState(false);
 
-		this.state = {};
-	}
-
-	/*********************************
-	 * Events
-	 *********************************/
-
-	/* It's an arrow function to keep access to {this} without binding. */
-	handleInputChange = event => {
-		const target = event.target;
-		const name = target.name;
-		const value = target.type === "checkbox" ? target.checked : target.value;
-
-		this.setState({ [name]: value });
-	}
-
-	/* It's an arrow function to keep access to {this} without binding. */
-	handleSubmit = event => {
+	const handleSubmit = async event => {
 		event.preventDefault();
-		this.registerUser();
-	}
-
-	registerUser() {
-		const { username, email, password1, password2 } = this.state;
 
 		Users.register(username, email, password1, password2)
-			.then(response => console.log(response))
+			.then(() => setRedirect(true))
 			.catch(console.error);
-	}
+	};
 
-	/*********************************
-	 * React functions
-	 *********************************/
+	if (redirect) return <Redirect to="/login"/>;
 
-	render() {
-		return (
+	return (
+		<div className="register">
 			<div className="register-box">
-				<h2>Inscription</h2>
+				<h2 className="highlight-font">Inscription</h2>
 
-				<form onSubmit={this.handleSubmit}>
-					<label htmlFor="username">Nom d&apos;utilisateur</label>
-					<input id="username" name="username" type="text" onChange={this.handleInputChange} required/>
+				<form onSubmit={handleSubmit}>
+					<InputField
+						label="Nom d&apos;utilisateur"
+						placeholder="Jimmy Barnes"
+						type="text"
+						onChange={value => setUsername(value)}
+						required={true}
+					/>
 
-					<label htmlFor="email">E-mail</label>
-					<input id="email" name="email" type="email" onChange={this.handleInputChange} required/>
+					<InputField
+						label="E-mail"
+						type="email"
+						placeholder="jimmy.barnes@caramail.fr"
+						onChange={value => setEmail(value)}
+						required={true}
+					/>
 
-					<label htmlFor="password1">Mot de passe</label>
-					<input id="password1" name="password1" type="password" onChange={this.handleInputChange} required/>
+					<InputField
+						label="Mot de passe"
+						type="password"
+						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+						onChange={value => setPassword1(value)}
+						required={true}
+					/>
 
-					<label htmlFor="password2">Mot de passe (confirmation)</label>
-					<input id="password2" name="password2" type="password" onChange={this.handleInputChange} required/>
+					<InputField
+						label="Mot de passe (encore)"
+						type="password"
+						placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;"
+						onChange={value => setPassword2(value)}
+						required={true}
+					/>
 
 					<input type="submit" value="S'inscrire"/>
+					<Link className="link" to="/login">J&apos;ai d&eacute;j&agrave; un compte</Link>
 				</form>
 			</div>
-		);
-	}
+		</div>
+	);
 }
 
 export default withAuth(Register, true);

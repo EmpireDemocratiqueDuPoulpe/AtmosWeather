@@ -47,5 +47,6 @@
 .App-body {
   position: relative;
   flex: 1;
+  display: flex;
   width: 100%;
 }
