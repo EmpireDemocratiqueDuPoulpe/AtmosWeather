@@ -1,0 +1,10 @@
+/* ---- Rain & Snow ----------------------------- */
+/* -- Container */
+.rain-snow, .rain, .snow { display: block; margin: 0; }
+
+/* -- Title and value */
+.rain-snow .title,
+.rain-snow .value { display: inline-block; }
+
+/* TODO: Change to primary color */
+.rain-snow .value { color: #ED2939; font-weight: bold; }

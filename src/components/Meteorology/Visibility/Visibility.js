@@ -1,16 +1,22 @@
 import PropTypes from "prop-types";
+import "./Visibility.css";
 
-const Visibility = (props) => {
-	let content = props.inMeters ? `${props.inMeters}m` : `${props.inKilometers}km`;
+function Visibility(props) {
+	const { inMeters, inKilometers, toKilometersAt, titleWidth } = props;
+	let value = inMeters ? `${inMeters}m` : `${inKilometers}km`;
 
-	if (props.toKilometersAt) {
-		if (props.inMeters > props.toKilometersAt) {
-			content = `${props.inMeters / 1000}km`;
+	if (inMeters && toKilometersAt) {
+		if (inMeters > toKilometersAt) {
+			value = `${inMeters / 1000}km`;
 		}
 	}
 
-	return (<span className="visibility">Visibilit&eacute;: {content}</span>);
-};
+	return (
+		<p className="visibility">
+			<span className="title" style={{ width: titleWidth }}>Visibilit&eacute; :</span> <span className="value">{value}</span>
+		</p>
+	);
+}
 
 const propValidator = (props, propName, componentName) => {
 	if (!props.inMeters && !props.inKilometers) {
@@ -39,7 +45,12 @@ const propValidator = (props, propName, componentName) => {
 Visibility.propTypes = {
 	inMeters: propValidator,
 	inKilometers: propValidator,
-	toKilometersAt: PropTypes.number
+	toKilometersAt: PropTypes.number,
+	titleWidth: PropTypes.string.isRequired
+};
+
+Visibility.defaultProps = {
+	titleWidth: "auto"
 };
 
 export default Visibility;

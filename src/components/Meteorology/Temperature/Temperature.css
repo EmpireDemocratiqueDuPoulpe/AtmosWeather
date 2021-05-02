@@ -1,4 +1,6 @@
 /* ---- Temperature ----------------------------- */
+.temperature { text-align: center; }
+
 /* -- Real temperature */
 .temperature .real-temp {
   display: block;

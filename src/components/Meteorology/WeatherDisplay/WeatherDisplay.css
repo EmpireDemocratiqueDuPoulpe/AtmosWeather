@@ -1,0 +1,34 @@
+/* ---- WeatherDisplay --------------------------------- */
+/* -- Container */
+.weather {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* -- Icon */
+.weather-icon.wi.square-keep-ratio::before {
+  padding-bottom: calc(50% - 0.5em);
+  padding-top: calc(50% - 0.5em);
+}
+
+.weather-icon.wi::before {
+  text-align: center;
+  font-size: 6em;
+  width: 100%;
+  font-weight: bold;
+  color: #ED2939; /* TODO: Change to primary color */
+}
+.weather-icon.wi.big::before { font-size: 12em; }
+
+/* -- Text */
+.weather-text {
+  text-align: center;
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+.weather-text::first-letter {
+  text-transform: uppercase;
+}

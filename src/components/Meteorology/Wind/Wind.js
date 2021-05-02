@@ -4,23 +4,24 @@ import "./Wind.css";
 
 const { oweather } = config;
 
-// TODO: Convert m/s to km/h
-// FIXME: Arrow is maybe facing the wrong way
-const Wind = (props) => (
-	<div className="wind">
-		{
-			typeof props.deg === "number" && (
-				<div className="wind-arrow" style={{ transform: `rotate(${props.deg}deg)` }}/>
-			)
-		}
+function Wind(props) {
+	const windAngle = props.deg ? props.deg + 180 : null;
+	const windSpeed = (props.speed * (oweather.speedToKmh ? 3.6 : 1)).toFixed(1);
 
-		<p className="wind-speed">{props.speed}&nbsp;{oweather.getSpeedUnit()}</p>
-	</div>
-);
+	return (
+		<div className="wind normal-font">
+			{windAngle !== null && (
+				<div className="wind-arrow" style={{ transform: `rotate(${windAngle}deg)` }}/>
+			)}
+
+			<p className="wind-speed">{windSpeed}&nbsp;{oweather.getSpeedUnit()}</p>
+		</div>
+	);
+}
 
 Wind.propTypes = {
 	speed: PropTypes.number.isRequired,
-	deg: PropTypes.number
+	deg: PropTypes.number,
 };
 
 export default Wind;

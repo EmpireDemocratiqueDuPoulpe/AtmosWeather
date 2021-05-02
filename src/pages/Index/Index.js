@@ -77,12 +77,12 @@ class Index extends React.Component {
 												return <SimpleCity key={index} uid={uid} name={city.name} onClick={this.handleCityClick}/>;
 											})
 										}
-										<AddSimpleCity uid={uid} onCityAdd={this.addCity}/>
 									</React.Fragment>
 								) : (
 									<p>Aucune ville trouv&eacute;e</p>
 								)
 							}
+							<AddSimpleCity uid={uid} onCityAdd={this.addCity}/>
 						</React.Fragment>
 					)
 				}

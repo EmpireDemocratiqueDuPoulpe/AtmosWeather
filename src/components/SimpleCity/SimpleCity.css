@@ -32,15 +32,10 @@
 }
 
 /* -- City name */
-.simple-city-name {
-  margin: 0 0 10px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+.simple-city-name { margin: 0; }
 .simple-city-name::first-letter { text-transform: uppercase; }
 
-/* -- Weather */
+/* -- WeatherDisplay */
 .simple-city .weather-icon {
   position: relative;
   width: 85%;

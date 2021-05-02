@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Weather from "../../Meteorology/Weather/Weather.js";
+import WeatherDisplay from "../../Meteorology/WeatherDisplay/WeatherDisplay.js";
 import Temperature from "../../Meteorology/Temperature/Temperature.js";
 import MinMaxTemperature from "../../Meteorology/MinMaxTemperature/MinMaxTemperature.js";
 import Humidity from "../../Meteorology/Humidity/Humidity.js";
@@ -123,23 +123,24 @@ export default class ForecastDisplay extends React.Component {
 				</div>
 
 				<div className="fd-data">
-					<Weather weather={currentData.weather}/>
+					<WeatherDisplay weather={currentData.weather} bigIcon={true}>
+						<Wind speed={currentData.wind.speed} deg={currentData.wind.deg}/>
+					</WeatherDisplay>
 
 					<Temperature value={currentData.main.temp} feelsLike={currentData.main.feels_like}/>
 					<MinMaxTemperature min={currentData.main.temp_min} max={currentData.main.temp_max}/>
 
-					<Wind speed={currentData.wind.speed} deg={currentData.wind.deg}/>
+					<Humidity value={currentData.main.humidity} titleWidth="50%"/>
+					<Pressure value={currentData.main.pressure} titleWidth="50%"/>
 
-					<Humidity value={currentData.main.humidity}/>
-					<Pressure value={currentData.main.pressure}/>
+					<Cloudiness value={currentData.clouds.all} titleWidth="50%"/>
+					<Visibility inMeters={currentData.visibility} toKilometersAt={1000} titleWidth="50%"/>
 
-					<Cloudiness value={currentData.clouds.all}/>
-					<Visibility inMeters={currentData.visibility} toKilometersAt={1000}/>
-
-					<Precipitation value={currentData.pop}/>
+					{currentData.pop ? (<Precipitation value={currentData.pop}  titleWidth="50%"/>) : null}
 					<RainSnow
 						rainLevel={currentData.rain ? currentData.rain["3h"] : null}
 						snowLevel={currentData.snow ? currentData.snow["3h"] : null}
+						titleWidth="50%"
 					/>
 				</div>
 			</div>

@@ -1,24 +1,25 @@
 import PropTypes from "prop-types";
+import "./RainSnow.css";
 
-const RainSnow = (props) => (
-	<div className="rain-snow">
-		{
-			props.rainLevel && (
-				<div>
-					<span>Pluie : {props.rainLevel}mm</span>
-				</div>
-			)
-		}
+function RainSnow(props) {
+	const { rainLevel, snowLevel, titleWidth } = props;
 
-		{
-			props.snowLevel && (
-				<div>
-					<span>Neige : {props.snowLevel}mm</span>
-				</div>
-			)
-		}
-	</div>
-);
+	return (
+		<div className="rain-snow">
+			{rainLevel && (
+				<p className="rain">
+					<span className="title" style={{ width: titleWidth }}>Pluie :</span> <span className="value">{rainLevel}mm</span>
+				</p>
+			)}
+
+			{snowLevel && (
+				<p className="rain">
+					<span className="title" style={{ width: titleWidth }}>Neige :</span> <span className="value">{snowLevel}mm</span>
+				</p>
+			)}
+		</div>
+	);
+}
 
 RainSnow.propTypes = {
 	rainLevel: PropTypes.oneOfType([
@@ -28,7 +29,12 @@ RainSnow.propTypes = {
 	snowLevel: PropTypes.oneOfType([
 		PropTypes.number,
 		PropTypes.string
-	])
+	]),
+	titleWidth: PropTypes.string.isRequired
+};
+
+RainSnow.defaultProps = {
+	titleWidth: "auto"
 };
 
 export default RainSnow;

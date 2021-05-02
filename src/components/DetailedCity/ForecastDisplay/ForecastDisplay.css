@@ -5,20 +5,36 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: teal;
+  height: 30px;
+  background: #ED2939;
+  color: white;
+  border-radius: 15px 15px 0 0;
 }
 
 /* -- Next & prev. arrows */
 .fd-previous-date,
 .fd-next-date {
   flex: 0 0 auto;
-  width: 20px;
-  height: 20px;
-  background: pink;
+  width: 12px;
+  height: 12px;
+  background-size: 12px 12px;
+  filter: invert(100%) sepia(0%) saturate(7464%) hue-rotate(123deg) brightness(101%) contrast(112%);
+  transition: filter 200ms ease-in;
   cursor: pointer;
 }
 
-.fd-next-date { background: red; }
+.fd-previous-date:hover,
+.fd-next-date:hover { filter: invert(84%) sepia(5%) saturate(11%) hue-rotate(354deg) brightness(97%) contrast(91%); }
+
+.fd-previous-date {
+  margin-left: 8px;
+  background: url("../../../assets/images/arrow_back_ios_new_black_24dp.svg") center;
+}
+
+.fd-next-date {
+  margin-right: 8px;
+  background: url("../../../assets/images/arrow_forward_ios_black_24dp.svg") center;
+}
 
 /* -- Selected date */
 .fd-current-date {
@@ -33,20 +49,36 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background: navajowhite;
+  height: 30px;
+  background: #E31F2F;
+  color: white;
+  border-radius: 0 0 15px 15px;
 }
 
 /* -- Next & prev. arrows */
 .fd-previous-time,
 .fd-next-time {
   flex: 0 0 auto;
-  width: 20px;
-  height: 20px;
-  background: pink;
+  width: 12px;
+  height: 12px;
+  background-size: 12px 12px;
+  filter: invert(100%) sepia(0%) saturate(7464%) hue-rotate(123deg) brightness(101%) contrast(112%);
+  transition: filter 200ms ease-in;
   cursor: pointer;
 }
 
-.fd-next-time { background: red; }
+.fd-previous-time:hover,
+.fd-next-time:hover { filter: invert(84%) sepia(5%) saturate(11%) hue-rotate(354deg) brightness(97%) contrast(91%); }
+
+.fd-previous-time {
+  margin-left: 8px;
+  background: url("../../../assets/images/arrow_back_ios_new_black_24dp.svg") center;
+}
+
+.fd-next-time {
+  margin-right: 8px;
+  background: url("../../../assets/images/arrow_forward_ios_black_24dp.svg") center;
+}
 
 /* -- Time carrousel */
 .fd-all-time {

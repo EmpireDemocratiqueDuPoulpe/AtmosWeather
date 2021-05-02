@@ -21,7 +21,11 @@ async function getWeekForecast(cityName) {
 	return await response.json();
 }
 
+function getIcon(weatherCode) {
+	return `wi wi-owm-${weatherCode}`;
+}
+
 /* ---- EXPORT ---------------------------------- */
 
-const Weather = { getCurrent, getWeekForecast };
+const Weather = { getCurrent, getWeekForecast, getIcon };
 export default Weather;

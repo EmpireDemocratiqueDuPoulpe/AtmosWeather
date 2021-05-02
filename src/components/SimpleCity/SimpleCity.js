@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Cities from "../../global/Cities.js";
 import Weather from "../../global/Weather.js";
-import WeatherDisplay from "../Meteorology/Weather/Weather.js";
+import WeatherDisplay from "../Meteorology/WeatherDisplay/WeatherDisplay.js";
 import Temperature from "../Meteorology/Temperature/Temperature.js";
 import Wind from "../Meteorology/Wind/Wind.js";
 import { ReactComponent as MoreIcon } from "../../assets/images/more_horiz_black_24dp.svg";
@@ -101,8 +101,10 @@ export default class SimpleCity extends React.Component {
 				onMouseLeave={this.handleMouseLeave}
 				onClick={this.handleClick}
 			>
-				<h2 className="simple-city-name">{name}</h2>
+				<h2 className="simple-city-name highlight-font ellipsis">{name}</h2>
+
 				{ isLoaded ? this.renderData() : this.renderLoading() }
+
 				<div className={`simple-city-delete ${menuOpened ? "menuOpened" : "menuClosed"}`}>
 					<div className="scd-button" onClick={this.handleMenuClick}>
 						<MoreIcon/>

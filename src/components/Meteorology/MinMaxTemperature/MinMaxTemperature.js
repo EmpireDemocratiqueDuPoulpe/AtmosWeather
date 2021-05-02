@@ -12,8 +12,8 @@ const MinMaxTemperature = (props) => (
 		</div>
 
 		<div className="max-temperature">
-			<div className="arrow"/>
 			<span>{props.max}{oweather.getTemperatureUnit()}</span>
+			<div className="arrow"/>
 		</div>
 	</div>
 );

@@ -1,0 +1,10 @@
+/* ---- Pressure -------------------------------- */
+/* -- Container */
+.pressure { display: block; margin: 0; }
+
+/* -- Title and value */
+.pressure .title,
+.pressure .value { display: inline-block; }
+
+/* TODO: Change to primary color */
+.pressure .value { color: #ED2939; font-weight: bold; }

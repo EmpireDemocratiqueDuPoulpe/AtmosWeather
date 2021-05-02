@@ -1,0 +1,11 @@
+/* ---- App logo -------------------------------- */
+.App-logo {
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+
+.App-logo img {
+  height: 100%;
+}

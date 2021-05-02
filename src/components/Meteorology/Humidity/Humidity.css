@@ -1,0 +1,10 @@
+/* ---- Humidity -------------------------------- */
+/* -- Container */
+.humidity { display: block; margin: 0; }
+
+/* -- Title and value */
+.humidity .title,
+.humidity .value { display: inline-block; }
+
+/* TODO: Change to primary color */
+.humidity .value { color: #ED2939; font-weight: bold; }

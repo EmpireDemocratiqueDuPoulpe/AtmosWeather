@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { DateTime } from "luxon";
 import Weather from "../../global/Weather.js";
 import config from "../../config/config.js";
-import WeatherDisplay from "../Meteorology/Weather/Weather.js";
+import Section from "./Section/Section.js";
+import WeatherDisplay from "../Meteorology/WeatherDisplay/WeatherDisplay.js";
 import Temperature from "../Meteorology/Temperature/Temperature.js";
 import MinMaxTemperature from "../Meteorology/MinMaxTemperature/MinMaxTemperature.js";
 import Humidity from "../Meteorology/Humidity/Humidity.js";
@@ -113,7 +114,10 @@ export default class DetailedCity extends React.Component {
 
 		return (
 			<div className="detailed-city">
-				<h2 className="detailed-city-name">{name}</h2>
+				<div className="detailed-city-header">
+					<h2 className="detailed-city-name highlight-font ellipsis">{name}</h2>
+				</div>
+
 				{
 					name ? (
 						<React.Fragment>
@@ -154,31 +158,33 @@ export default class DetailedCity extends React.Component {
 						<p className="dc-error">Une erreur est survenue: <span>{error}</span></p>
 					) : (
 						<div className="dc-data">
-							<h3>Maintenant:</h3>
-							<div className="dc-current">
-								<WeatherDisplay weather={weather.weather}/>
+							<Section name="Maintenant" defaultState="close">
+								<WeatherDisplay weather={weather.weather} bigIcon={true}>
+									<Wind speed={weather.wind.speed} deg={weather.wind.deg}/>
+								</WeatherDisplay>
 
 								<Temperature value={weather.main.temp} feelsLike={weather.main.feels_like}/>
 								<MinMaxTemperature min={weather.main.temp_min} max={weather.main.temp_max}/>
 
-								<Wind speed={weather.wind.speed} deg={weather.wind.deg}/>
+								<Humidity value={weather.main.humidity} titleWidth="50%"/>
+								<Pressure value={weather.main.pressure} titleWidth="50%"/>
 
-								<Humidity value={weather.main.humidity}/>
-								<Pressure value={weather.main.pressure}/>
+								<Cloudiness value={weather.clouds.all} titleWidth="50%"/>
+								<Visibility inMeters={weather.visibility} toKilometersAt={1000} titleWidth="50%"/>
 
-								<Cloudiness value={weather.clouds.all}/>
-								<Visibility inMeters={weather.visibility} toKilometersAt={1000}/>
-
-								{weather.pop ? (<Precipitation value={weather.pop}/>) : null}
+								{weather.pop ? (<Precipitation value={weather.pop}  titleWidth="50%"/>) : null}
 								<RainSnow
 									rainLevel={weather.rain ? weather.rain["3h"] : null}
 									snowLevel={weather.snow ? weather.snow["3h"] : null}
+									titleWidth="50%"
 								/>
-							</div>
-							<h3>&Agrave; l&apos;avenir:</h3>
-							{ betterForecasts && (
-								<ForecastDisplay forecasts={betterForecasts}/>
-							)}
+							</Section>
+
+							<Section name="&Agrave; l&apos;avenir" keyName="avenir" defaultState="open">
+								{ betterForecasts && (
+									<ForecastDisplay forecasts={betterForecasts}/>
+								)}
+							</Section>
 						</div>
 					)
 				}

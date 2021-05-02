@@ -1,0 +1,10 @@
+/* ---- Precipitation --------------------------- */
+/* -- Container */
+.precipitation { display: block; margin: 0; }
+
+/* -- Title and value */
+.precipitation .title,
+.precipitation .value { display: inline-block; }
+
+/* TODO: Change to primary color */
+.precipitation .value { color: #ED2939; font-weight: bold; }
