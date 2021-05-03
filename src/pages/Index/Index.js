@@ -47,9 +47,9 @@ class Index extends React.Component {
 		Cities.getOf(uid)
 			.then(response => {
 				if (response.error) {
-					this.setState({ error: response.error })
+					this.setState({ error: response.error });
 				} else {
-					this.setState({ cities: response, isLoaded: true })
+					this.setState({ cities: response, isLoaded: true });
 				}
 			})
 			.catch(err => this.setState({ error: err }));

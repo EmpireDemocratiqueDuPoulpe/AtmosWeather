@@ -86,9 +86,9 @@ export default class SimpleCity extends React.Component {
 		Weather.getCurrent(name)
 			.then(response => {
 				if (response.error) {
-					this.setState({ error: response.error })
+					this.setState({ error: response.error });
 				} else {
-					this.setState({ city: response, isLoaded: true })
+					this.setState({ city: response, isLoaded: true });
 				}
 			})
 			.catch(err => this.setState({ error: err }));
