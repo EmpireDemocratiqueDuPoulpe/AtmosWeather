@@ -78,9 +78,7 @@ class Index extends React.Component {
 											})
 										}
 									</React.Fragment>
-								) : (
-									<p>Aucune ville trouv&eacute;e</p>
-								)
+								) : null
 							}
 							<AddSimpleCity uid={uid} onCityAdd={this.addCity}/>
 						</React.Fragment>
