@@ -23,7 +23,8 @@
   transform: translate(-50%, -50%);
 }
 
-.register-box h2 { margin: 0 0 20px 0; }
+.register-box h2,
+.register-box .error { margin: 0 0 10px 0; }
 
   /* -- Form */
 .register-box form {

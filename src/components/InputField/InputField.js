@@ -2,7 +2,10 @@ import PropTypes from "prop-types";
 import "./InputField.css";
 
 function InputField(props) {
-	const { autoComplete, autoFocus, disabled, readonly, required, type, value, label, showLabel, placeholder, onChange } = props;
+	const {
+		autoComplete, autoFocus, disabled, readonly, required, type, value, label,
+		minLength, maxLength, showLabel, placeholder, onChange, error
+	} = props;
 	const id = `${label.replace(/[`~!@#$%^&*()\s_|+\-=?;:'",.<>{}[\]\\/]/gi, "").toLowerCase()}-input`;
 
 	const handleChange = event => {
@@ -11,7 +14,7 @@ function InputField(props) {
 	};
 
 	return (
-		<div className="input-field">
+		<div className={`input-field ${error ? "field-error" : ""}`}>
 			{showLabel && <label htmlFor={id}>{label}</label>}
 			<input
 				id={id}
@@ -21,6 +24,8 @@ function InputField(props) {
 				type={type}
 				placeholder={placeholder}
 				value={value}
+				minLength={minLength}
+				maxLength={maxLength}
 				onChange={handleChange}
 				disabled={disabled}
 				readOnly={readonly}
@@ -41,10 +46,13 @@ InputField.propTypes = {
 		"password", "radio", "range", "reset", "search", "submit", "tel", "text", "time", "url", "week"
 	]).isRequired,
 	value: PropTypes.string,
+	minLength: PropTypes.number,
+	maxLength: PropTypes.number,
 	label: PropTypes.string.isRequired,
 	showLabel: PropTypes.bool,
 	placeholder: PropTypes.string,
-	onChange: PropTypes.func
+	onChange: PropTypes.func,
+	error: PropTypes.bool
 };
 
 InputField.defaultProps = {
@@ -53,7 +61,9 @@ InputField.defaultProps = {
 	disabled: false,
 	readonly: false,
 	required: false,
-	showLabel: true
+	minLength: 0,
+	showLabel: true,
+	error: false
 };
 
 export default InputField;

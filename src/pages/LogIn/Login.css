@@ -23,7 +23,8 @@
   transform: translate(-50%, -50%);
 }
 
-.login-box h2 { margin: 0 0 20px 0; }
+.login-box h2 { margin: 0 0 10px 0; }
+.login-box .error { margin: 0 0 10px 0; }
 
 /* -- Form */
 .login-box form {

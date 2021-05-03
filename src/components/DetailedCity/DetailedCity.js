@@ -49,9 +49,13 @@ export default class DetailedCity extends React.Component {
 
 		Weather.getWeekForecast(name)
 			.then(response => {
-				this.setState({ forecast: response, isLoaded: true }, () => {
-					this.restructureForecast();
-				});
+				if (response.error) {
+					this.setState({ error: response.error });
+				} else {
+					this.setState({ forecast: response, isLoaded: true }, () => {
+						this.restructureForecast();
+					});
+				}
 			})
 			.catch(err => this.setState({ error: err }));
 	}
@@ -133,7 +137,6 @@ export default class DetailedCity extends React.Component {
 		);
 	}
 
-	// TODO: Better loading (gif, animation)
 	renderWaitingForClick() {
 		return (
 			<p>Cliquez sur une ville pour voir les pr&eacute;visions hebdomadaire.</p>
@@ -150,12 +153,11 @@ export default class DetailedCity extends React.Component {
 	renderData() {
 		const { currentCity: { weather }, betterForecasts, error } = this.state;
 
-		// TODO: Add current weather
 		return(
 			<div className="dc-body">
 				{
 					error ? (
-						<p className="dc-error">Une erreur est survenue: <span>{error}</span></p>
+						<p className="error">Une erreur est survenue: <span>{error}</span></p>
 					) : (
 						<div className="dc-data">
 							<Section name="Maintenant" defaultState="close">

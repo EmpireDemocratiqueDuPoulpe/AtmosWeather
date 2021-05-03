@@ -45,7 +45,13 @@ class Index extends React.Component {
 		const { uid } = this.props;
 
 		Cities.getOf(uid)
-			.then(json => this.setState({ cities: json, isLoaded: true }))
+			.then(response => {
+				if (response.error) {
+					this.setState({ error: response.error })
+				} else {
+					this.setState({ cities: response, isLoaded: true })
+				}
+			})
 			.catch(err => this.setState({ error: err }));
 	}
 

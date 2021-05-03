@@ -67,10 +67,10 @@ export default class SimpleCity extends React.Component {
 
 		Cities.delete(uid, name)
 			.then(response => {
-				if (response.code === 202) {
+				if (response.ok) {
 					this.setState({ deleted: true });
 				} else {
-					console.error(response.message);
+					console.error(response);
 				}
 			})
 			.catch(console.error);
@@ -84,7 +84,13 @@ export default class SimpleCity extends React.Component {
 		const { name } = this.props;
 
 		Weather.getCurrent(name)
-			.then(response => this.setState({ city: response, isLoaded: true }))
+			.then(response => {
+				if (response.error) {
+					this.setState({ error: response.error })
+				} else {
+					this.setState({ city: response, isLoaded: true })
+				}
+			})
 			.catch(err => this.setState({ error: err }));
 	}
 

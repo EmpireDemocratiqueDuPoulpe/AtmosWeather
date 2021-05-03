@@ -10,17 +10,22 @@ function LogIn() {
 	const { token, uid, username } = useAuth();
 	const [ email, setEmail ] = useState();
 	const [ password, setPassword ] = useState();
+	const [ error, setError ] = useState();
 	const [ redirect, setRedirect ] = useState(false);
 
 	const handleSubmit = async event => {
 		event.preventDefault();
 
 		Users.login(email, password)
-			.then(user => {
-				token.set(user.token);
-				uid.set(user.uid);
-				username.set(user.username);
-				setRedirect(true);
+			.then(response => {
+				if (response.error) {
+					setError({message: response.error, fields: response.fields});
+				} else {
+					token.set(response.token);
+					uid.set(response.uid);
+					username.set(response.username);
+					setRedirect(true);
+				}
 			})
 			.catch(console.error);
 	};
@@ -32,6 +37,8 @@ function LogIn() {
 			<div className="login-box">
 				<h2>Connexion</h2>
 
+				{error && <span className="error">{error.message}</span>}
+
 				<form onSubmit={handleSubmit}>
 					<InputField
 						label="E-mail"
@@ -39,6 +46,7 @@ function LogIn() {
 						type="email"
 						onChange={value => setEmail(value)}
 						required={true}
+						error={error ? error.fields.includes("email") : false}
 					/>
 
 					<InputField
@@ -47,6 +55,7 @@ function LogIn() {
 						type="password"
 						onChange={value => setPassword(value)}
 						required={true}
+						error={error ? error.fields.includes("password") : false}
 					/>
 
 					<input type="submit" value="Se connecter"/>

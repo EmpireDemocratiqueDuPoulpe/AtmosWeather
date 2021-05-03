@@ -25,6 +25,14 @@ code {
 
 .link.red { color: #ED2939; }
 
+/* -- Errors */
+
+.error {
+  display: inline-block;
+  font-size: 0.9em;
+  color: #ED2939;
+}
+
 /* -- Special classes */
 .normal-font {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",

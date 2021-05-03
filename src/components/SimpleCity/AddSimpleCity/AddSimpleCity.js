@@ -14,14 +14,11 @@ function AddSimpleCity(props) {
 
 		Cities.add(uid, city)
 			.then(response => {
-				switch (response.code) {
-				case 200:
+				if (response.error) {
+					console.error(response);
+				} else {
 					onCityAdd(city);
 					setIdle(true);
-					break;
-				default:
-					console.error(response.message);
-					break;
 				}
 			})
 			.catch(console.error);

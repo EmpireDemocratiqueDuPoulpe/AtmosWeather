@@ -37,10 +37,22 @@
   cursor: text;
 }
 
+.input-field.field-error label {
+  background: #ED2939;
+  color: #960000;
+  border: thin #CC0E27 solid;
+}
+
 .input-field:focus-within > label {
   background: #678EFE;
   color: #FFFFFF;
   border-color: #275EFE;
+}
+
+.input-field.field-error:focus-within > label {
+  background: #ED2939;
+  color: #960000;
+  border: thin #CC0E27 solid;
 }
 
 /* -- Input */
@@ -69,5 +81,7 @@
   outline: none;
   border-color: #275EFE;
 }
+
+.input-field.field-error input:focus { border-color: #CC0E27; }
 
 .input-field input::placeholder { color: #CBD1DC; }
