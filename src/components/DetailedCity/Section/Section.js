@@ -51,8 +51,6 @@ function Section(props) {
 		}*/
 	});
 
-	console.log(wrapperHeight);
-
 	return (
 		<div className="section">
 			<div className="section-header" onClick={handleClick}>

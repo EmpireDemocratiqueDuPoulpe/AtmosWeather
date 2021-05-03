@@ -23,6 +23,9 @@
   cursor: pointer;
 }
 
+.fd-previous-date.inactive,
+.fd-next-date.inactive { filter: invert(10%) sepia(99%) saturate(6909%) hue-rotate(355deg) brightness(72%) contrast(105%) !important; }
+
 .fd-previous-date:hover,
 .fd-next-date:hover { filter: invert(84%) sepia(5%) saturate(11%) hue-rotate(354deg) brightness(97%) contrast(91%); }
 
@@ -66,6 +69,9 @@
   transition: filter 200ms ease-in;
   cursor: pointer;
 }
+
+.fd-previous-time.inactive,
+.fd-next-time.inactive { filter: invert(10%) sepia(99%) saturate(6909%) hue-rotate(355deg) brightness(72%) contrast(105%) !important; }
 
 .fd-previous-time:hover,
 .fd-next-time:hover { filter: invert(84%) sepia(5%) saturate(11%) hue-rotate(354deg) brightness(97%) contrast(91%); }

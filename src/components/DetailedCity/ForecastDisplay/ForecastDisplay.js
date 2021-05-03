@@ -26,14 +26,19 @@ export default class ForecastDisplay extends React.Component {
 	 * Events
 	 *********************************/
 
-	// FIXME: The page crash when switching to a date that doesn't have the previous time index in it.
+	// FIXME: The page crash is fixed but in works in the wrong way. For a date with 3 times [17h00, 20h00, 23h00] and another
+	// FIXME: date with times [02h00, ..., 23h00], it will reset to the "middle time" even if the user is on "23h00".
 	/* It's an arrow function to keep access to {this} without binding. */
 	toPreviousDate = () => {
 		const { currentDate } = this.state;
 		const previousDate = Math.max(currentDate - 1, 0);
 
 		if (currentDate !== previousDate) {
-			this.setState({ currentDate: previousDate });
+			if (this.needToFixTime(previousDate)) {
+				this.toMiddleTime(previousDate);
+			} else {
+				this.setState({ currentDate: previousDate });
+			}
 		}
 	}
 
@@ -44,7 +49,11 @@ export default class ForecastDisplay extends React.Component {
 		const nextDate = Math.min(currentDate + 1, forecasts.length - 1);
 
 		if (currentDate !== nextDate) {
-			this.setState({ currentDate: nextDate });
+			if (this.needToFixTime(nextDate)) {
+				this.toMiddleTime(nextDate);
+			} else {
+				this.setState({ currentDate: nextDate });
+			}
 		}
 	}
 
@@ -59,6 +68,14 @@ export default class ForecastDisplay extends React.Component {
 	}
 
 	/* It's an arrow function to keep access to {this} without binding. */
+	toMiddleTime = date => {
+		const { forecasts } = this.props;
+		const data = forecasts[date].data;
+
+		this.setState({ currentDate: date, currentTime: Math.floor(data.length / 2) });
+	}
+
+	/* It's an arrow function to keep access to {this} without binding. */
 	toNextTime = () => {
 		const { forecasts } = this.props;
 		const { currentDate, currentTime } = this.state;
@@ -67,6 +84,14 @@ export default class ForecastDisplay extends React.Component {
 		if (currentTime !== nextTime) {
 			this.setState({ currentTime: nextTime });
 		}
+	}
+
+	/* It's an arrow function to keep access to {this} without binding. */
+	needToFixTime = nextDate => {
+		const { currentTime } = this.state;
+		const { forecasts } = this.props;
+
+		return !Object.prototype.hasOwnProperty.call(forecasts[nextDate].data, currentTime);
 	}
 
 	/*********************************
@@ -89,22 +114,26 @@ export default class ForecastDisplay extends React.Component {
 		const currentForecasts = forecasts[currentDate];
 		const currentForecast = currentForecasts.data[currentTime];
 		const currentData = currentForecast.forecast;
+		const isPrevDateInactive = currentDate - 1 < 0 ? "inactive" : "";
+		const isNextDateInactive = currentDate + 1 >= forecasts.length ? "inactive" : "";
+		const isPrevTimeInactive = currentTime - 1 < 0 ? "inactive" : "";
+		const isNextTimeInactive = currentTime + 1 >= forecasts[currentDate].data.length ? "inactive" : "";
 
 		// TODO: Check if the currentDate and currentTime need to be reset on city change
 		return (
 			<div className="forecast-display">
 				<div className="fd-date-changer">
-					<div className="fd-previous-date" onClick={this.toPreviousDate}/>
+					<div className={`fd-previous-date ${isPrevDateInactive}`} onClick={this.toPreviousDate}/>
 
 					<div className="fd-current-date">
 						<span>{currentForecasts.date}</span>
 					</div>
 
-					<div className="fd-next-date" onClick={this.toNextDate}/>
+					<div className={`fd-next-date ${isNextDateInactive}`} onClick={this.toNextDate}/>
 				</div>
 
 				<div className="fd-time-changer">
-					<div className="fd-previous-time" onClick={this.toPreviousTime}/>
+					<div className={`fd-previous-time ${isPrevTimeInactive}`} onClick={this.toPreviousTime}/>
 
 					<div className="fd-all-time">
 						{
@@ -119,7 +148,7 @@ export default class ForecastDisplay extends React.Component {
 						}
 					</div>
 
-					<div className="fd-next-time" onClick={this.toNextTime}/>
+					<div className={`fd-next-time ${isNextTimeInactive}`} onClick={this.toNextTime}/>
 				</div>
 
 				<div className="fd-data">
