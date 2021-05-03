@@ -67,7 +67,7 @@ export default class SimpleCity extends React.Component {
 
 		Cities.delete(uid, name)
 			.then(response => {
-				if (response.ok) {
+				if (!response.err) {
 					this.setState({ deleted: true });
 				} else {
 					console.error(response);
@@ -109,7 +109,7 @@ export default class SimpleCity extends React.Component {
 			>
 				<h2 className="simple-city-name highlight-font ellipsis">{name}</h2>
 
-				{ isLoaded ? this.renderData() : this.renderLoading() }
+				{ isLoaded ? this.renderData() : <span className="loader"/> }
 
 				<div className={`simple-city-delete ${menuOpened ? "menuOpened" : "menuClosed"}`}>
 					<div className="scd-button" onClick={this.handleMenuClick}>
@@ -126,13 +126,6 @@ export default class SimpleCity extends React.Component {
 					</div>
 				</div>
 			</div>
-		);
-	}
-
-	// TODO: Better loading (gif, animation)
-	renderLoading() {
-		return (
-			<p>Chargement en cours...</p>
 		);
 	}
 

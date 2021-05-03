@@ -23,6 +23,7 @@
 .cities-wrapper {
   box-sizing: border-box;
   flex: 1;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -47,8 +48,20 @@
   height: 10px;
 }
 
+.cities-wrapper .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cities-wrapper .loading .loader {
+  transform: scale(5, 5);
+}
+
 /* -- Weather Details */
 .city-detail {
+  position: relative;
   flex: 0 0 auto;
   width: 25%;
   height: 100%;

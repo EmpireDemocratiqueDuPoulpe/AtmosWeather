@@ -125,7 +125,7 @@ export default class DetailedCity extends React.Component {
 				{
 					name ? (
 						<React.Fragment>
-							{ isLoaded ? this.renderData() : this.renderLoading() }
+							{ isLoaded ? this.renderData() : <div className="loading"><span className="loader"/></div> }
 						</React.Fragment>
 					) : (
 						<React.Fragment>
@@ -140,13 +140,6 @@ export default class DetailedCity extends React.Component {
 	renderWaitingForClick() {
 		return (
 			<p>Cliquez sur une ville pour voir les pr&eacute;visions hebdomadaire.</p>
-		);
-	}
-
-	// TODO: Better loading (gif, animation)
-	renderLoading() {
-		return (
-			<p>Chargement en cours...</p>
 		);
 	}
 

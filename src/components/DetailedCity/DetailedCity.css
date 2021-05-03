@@ -1,5 +1,16 @@
 /* ---- Detailed City --------------------------- */
 /* -- Container */
+.detailed-city .loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.detailed-city .loading .loader {
+  transform: scale(5, 5);
+}
+
 .dc-body { padding: 10px 20px; }
 
 /* -- City name */

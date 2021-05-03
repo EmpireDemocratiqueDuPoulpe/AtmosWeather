@@ -55,15 +55,6 @@ class Index extends React.Component {
 			.catch(err => this.setState({ error: err }));
 	}
 
-	// TODO: Better loading (gif, animation)
-	renderLoading() {
-		return (
-			<React.Fragment>
-				<p>Chargement en cours...</p>
-			</React.Fragment>
-		);
-	}
-
 	renderData() {
 		const { uid } = this.props;
 		const { cities, error } = this.state;
@@ -100,7 +91,7 @@ class Index extends React.Component {
 		return (
 			<div className="sky">
 				<div className="cities-wrapper custom-scrollbars">
-					{ isLoaded ? this.renderData() : this.renderLoading() }
+					{ isLoaded ? this.renderData() : <div className="loading"><span className="loader"/></div> }
 				</div>
 
 				<div className="city-detail custom-scrollbars">
