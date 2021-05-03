@@ -139,7 +139,7 @@ export default class DetailedCity extends React.Component {
 
 	renderWaitingForClick() {
 		return (
-			<p>Cliquez sur une ville pour voir les pr&eacute;visions hebdomadaire.</p>
+			<p className="centered-text">Cliquez sur une ville pour voir les pr&eacute;visions hebdomadaire.</p>
 		);
 	}
 

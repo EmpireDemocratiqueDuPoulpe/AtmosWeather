@@ -2,8 +2,12 @@ import { Redirect } from "react-router";
 import useAuth from "../../components/Auth/useAuth.js";
 
 export default function LogOut() {
-	const { all } = useAuth();
-	all.delete();
+	const { token, uid, username, all } = useAuth();
 
-	return <Redirect to="/login"/>;
+	if (token.value || uid.value || username.value) {
+		all.delete();
+		return null;
+	} else {
+		return <Redirect to="/login"/>;
+	}
 }

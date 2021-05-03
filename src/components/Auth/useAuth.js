@@ -9,19 +9,37 @@ export default function useAuth() {
 	const getUsername = () =>	{ return storage.getItem("username"); };
 	const getAll 			= () => { return { token: getToken(), uid: getUID(), username: getUsername() }; };
 
-	const saveToken 		= token => { storage.setItem("token", token ?? ""); };
-	const saveUID 			= uid => { storage.setItem("uid", uid ?? ""); };
-	const saveUsername 	= username => { storage.setItem("username", username ?? ""); };
+	const saveToken 		= token => { storage.setItem("token", token ?? ""); setToken(token); };
+	const saveUID 			= uid => { storage.setItem("uid", uid ?? ""); setUID(uid); };
+	const saveUsername 	= username => { storage.setItem("username", username ?? ""); setUsername(username); };
 	const saveAll = (token, uid, username) => { saveToken(token); saveUID(uid); saveUsername(username); };
 
-	const removeToken 		= () => { storage.removeItem("token"); };
-	const removeUID 			= () => { storage.removeItem("uid"); };
-	const removeUsername 	= () => { storage.removeItem("username"); };
-	const removeAll 			= () => { removeToken(); removeUID(); removeUsername(); };
+	const removeToken = () => {
+		if (token) {
+			storage.removeItem("token");
+			setToken(null);
+		}
+	};
 
-	const [ token ] = useState(getToken());
-	const [ uid ] = useState(getUID());
-	const [ username ] = useState(getUsername());
+	const removeUID = () => {
+		if (uid) {
+			storage.removeItem("uid");
+			setUID(null);
+		}
+	};
+
+	const removeUsername = () => {
+		if (username) {
+			storage.removeItem("username");
+			setUsername(null);
+		}
+	};
+
+	const removeAll = () => { removeToken(); removeUID(); removeUsername(); };
+
+	const [ token, setToken ] = useState(getToken());
+	const [ uid, setUID ] = useState(getUID());
+	const [ username, setUsername ] = useState(getUsername());
 
 	return {
 		token: 		{ set: saveToken, delete: removeToken, value: token },

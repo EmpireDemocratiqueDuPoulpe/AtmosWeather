@@ -72,6 +72,8 @@ code {
   overflow: hidden;
 }
 
+.centered-text { text-align: center; }
+
 .no-padding { padding: 0 !important; }
 
 .custom-scrollbars::-webkit-scrollbar       { width: 8px; }

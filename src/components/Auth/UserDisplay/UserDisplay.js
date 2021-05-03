@@ -1,20 +1,28 @@
 import { Link } from "react-router-dom";
-import useAuth from "../useAuth.js";
+import PropTypes from "prop-types";
+import withAuth from "../withAuth.js";
 import "./UserDisplay.css";
 
-export default function UserDisplay() {
-	const { token, username } = useAuth();
+function UserDisplay(props) {
+	const { token, username } = props;
 
-	if (!token.value || !username.value) return null;
+	if (!token || !username) return null;
 
 	return (
 		<div className="user-display">
 			<div className="user-pic"/>
 
 			<div className="user-actions">
-				<p className="username">{username.value}</p>
+				<p className="username">{username}</p>
 				<Link className="logout" to="/logout">D&eacute;connexion</Link>
 			</div>
 		</div>
 	);
 }
+
+UserDisplay.propTypes = {
+	token: PropTypes.string.isRequired,
+	username: PropTypes.string
+};
+
+export default withAuth(UserDisplay);

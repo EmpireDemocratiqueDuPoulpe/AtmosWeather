@@ -6,7 +6,6 @@ import GlobalStyles from "../../components/Themes/GlobalStyles/GlobalStyles.js";
 import useThemes from "../../components/Themes/useThemes.js";
 import ThemeSwitcher from "../../components/Themes/ThemeSwitcher/ThemeSwitcher.js";
 import AppLogo from "../../components/AppLogo/AppLogo.js";
-import useAuth from "../../components/Auth/useAuth.js";
 import UserDisplay from "../../components/Auth/UserDisplay/UserDisplay.js";
 import Index from "../Index/Index.js";
 import Register from "../Register/Register.js";
@@ -19,7 +18,6 @@ import "./App.css";
 export default function App() {
 	const [ theme, toggleTheme, ready ] = useThemes();
 	const currentTheme = (theme === "light" ? Themes.light : Themes.dark);
-	const { uid } = useAuth();
 
 	if (!ready) return <div/>;
 
@@ -43,9 +41,7 @@ export default function App() {
 
 					<div className="App-body">
 						<Switch>
-							<Route exact path={["/", "//", "/index"]}>
-								<Index uid={uid.value}/>
-							</Route>
+							<Route exact path={["/", "//", "/index"]} component={Index}/>
 							<Route path="/register" component={Register}/>
 							<Route path="/login" component={LogIn}/>
 							<Route path="/logout" component={LogOut}/>
