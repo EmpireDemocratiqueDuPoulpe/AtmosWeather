@@ -32,7 +32,7 @@ function Register() {
 			.catch(console.error);
 	};
 
-	if (redirect) return <Redirect to="/login"/>;
+	if (redirect) return <Redirect to="/"/>;
 
 	return (
 		<div className="register">
