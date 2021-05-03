@@ -4,17 +4,19 @@ import useAuth from "./useAuth.js";
 const withAuth = (Component, reverse = false) => {
 	const AuthRoute = props => {
 		const { token, uid, username } = useAuth();
-		let isAuth = (token.value && uid.value);
+		let willRedirect = (!token.value || !uid.value);
+		const url = window.location.href;
 		const redirectURL = reverse ? "/" : "/login";
 
-		console.log(token, uid, username);
-		console.log(Component);
+		if (reverse) willRedirect = !willRedirect;
 
-		if (reverse) isAuth = !isAuth;
+		if ((url.includes("/login") || url.includes("/register")) && willRedirect) {
+			willRedirect = false;
+		}
 
-		return isAuth
-			? <Component {...props} token={token.value} uid={uid.value} username={username.value}/>
-			: <Redirect to={redirectURL}/>;
+		return willRedirect
+			? <Redirect to={redirectURL}/>
+			: <Component {...props} token={token.value} uid={uid.value} username={username.value}/>;
 	};
 
 	return AuthRoute;

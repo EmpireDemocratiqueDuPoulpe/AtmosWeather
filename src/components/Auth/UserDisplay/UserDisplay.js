@@ -21,7 +21,7 @@ function UserDisplay(props) {
 }
 
 UserDisplay.propTypes = {
-	token: PropTypes.string.isRequired,
+	token: PropTypes.string,
 	username: PropTypes.string
 };
 

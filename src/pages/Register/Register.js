@@ -4,9 +4,11 @@ import withAuth from "../../components/Auth/withAuth.js";
 import Users from "../../global/Users.js";
 import InputField from "../../components/InputField/InputField.js";
 import "./Register.css";
+import useAuth from "../../components/Auth/useAuth";
 
 function Register() {
-	const [ username, setUsername ] = useState();
+	const { token, uid, username } = useAuth();
+	const [ inUsername, setInUsername ] = useState();
 	const [ email, setEmail ] = useState();
 	const [ password1, setPassword1 ] = useState();
 	const [ password2, setPassword2 ] = useState();
@@ -16,11 +18,14 @@ function Register() {
 	const handleSubmit = async event => {
 		event.preventDefault();
 
-		Users.register(username, email, password1, password2)
+		Users.register(inUsername, email, password1, password2)
 			.then(response => {
 				if (response.error) {
 					setError({message: response.error, fields: response.fields});
 				} else {
+					token.set(response.token);
+					uid.set(response.uid);
+					username.set(response.username);
 					setRedirect(true);
 				}
 			})
@@ -42,7 +47,7 @@ function Register() {
 						placeholder="Jimmy Barnes"
 						type="text"
 						maxLength={32}
-						onChange={value => setUsername(value)}
+						onChange={value => setInUsername(value)}
 						required={true}
 						error={error ? error.fields.includes("username") : false}
 					/>
