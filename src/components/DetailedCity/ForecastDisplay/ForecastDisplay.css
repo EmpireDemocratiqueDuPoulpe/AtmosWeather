@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   height: 30px;
-  background: #ED2939;
+  background: #5B86E5;
   color: white;
   border-radius: 15px 15px 0 0;
 }
@@ -24,7 +24,7 @@
 }
 
 .fd-previous-date.inactive,
-.fd-next-date.inactive { filter: invert(10%) sepia(99%) saturate(6909%) hue-rotate(355deg) brightness(72%) contrast(105%) !important; }
+.fd-next-date.inactive { filter: invert(27%) sepia(92%) saturate(1230%) hue-rotate(203deg) brightness(91%) contrast(85%) !important; }
 
 .fd-previous-date:hover,
 .fd-next-date:hover { filter: invert(84%) sepia(5%) saturate(11%) hue-rotate(354deg) brightness(97%) contrast(91%); }
@@ -53,7 +53,7 @@
   justify-content: center;
   align-items: center;
   height: 30px;
-  background: #E31F2F;
+  background: #517CDB;
   color: white;
   border-radius: 0 0 15px 15px;
 }
@@ -71,7 +71,7 @@
 }
 
 .fd-previous-time.inactive,
-.fd-next-time.inactive { filter: invert(10%) sepia(99%) saturate(6909%) hue-rotate(355deg) brightness(72%) contrast(105%) !important; }
+.fd-next-time.inactive { filter: invert(27%) sepia(92%) saturate(1230%) hue-rotate(203deg) brightness(91%) contrast(85%) !important; }
 
 .fd-previous-time:hover,
 .fd-next-time:hover { filter: invert(84%) sepia(5%) saturate(11%) hue-rotate(354deg) brightness(97%) contrast(91%); }
@@ -136,4 +136,9 @@
   font-size: 0.8em;
   opacity: 0;
   transform: translateX(-50%) translateY(50%);
+}
+
+/* ---- Forecast data --------------------------- */
+.fd-data {
+  padding-top: 5px;
 }

@@ -6,5 +6,4 @@
 .rain-snow .title,
 .rain-snow .value { display: inline-block; }
 
-/* TODO: Change to primary color */
-.rain-snow .value { color: #ED2939; font-weight: bold; }
+.rain-snow .value { color: #517CDB; font-weight: bold; }

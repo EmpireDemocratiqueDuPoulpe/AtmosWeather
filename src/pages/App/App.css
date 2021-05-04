@@ -23,7 +23,9 @@
   margin: 0 auto;
   padding: 0 20px;
   /* DARK background-color: #323643; */
-  background: #E31F2F;
+  background: #396afc;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #517cdb, #3eb1cd);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #517cdb, #3eb1cd); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
 }
 

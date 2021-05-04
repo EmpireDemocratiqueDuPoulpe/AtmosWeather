@@ -6,5 +6,4 @@
 .cloudiness .title,
 .cloudiness .value { display: inline-block; }
 
-/* TODO: Change to primary color */
-.cloudiness .value { color: #ED2939; font-weight: bold; }
+.cloudiness .value { color: #517CDB; font-weight: bold; }

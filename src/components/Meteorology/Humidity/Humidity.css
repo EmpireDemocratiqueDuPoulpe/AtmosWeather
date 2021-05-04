@@ -6,5 +6,4 @@
 .humidity .title,
 .humidity .value { display: inline-block; }
 
-/* TODO: Change to primary color */
-.humidity .value { color: #ED2939; font-weight: bold; }
+.humidity .value { color: #517CDB; font-weight: bold; }

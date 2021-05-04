@@ -6,5 +6,4 @@
 .pressure .title,
 .pressure .value { display: inline-block; }
 
-/* TODO: Change to primary color */
-.pressure .value { color: #ED2939; font-weight: bold; }
+.pressure .value { color: #517CDB; font-weight: bold; }

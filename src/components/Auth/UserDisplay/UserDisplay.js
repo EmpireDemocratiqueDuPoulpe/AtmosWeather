@@ -14,7 +14,7 @@ function UserDisplay(props) {
 
 			<div className="user-actions">
 				<p className="username">{username}</p>
-				<Link className="logout" to="/logout">D&eacute;connexion</Link>
+				<Link className="logout link white" to="/logout">D&eacute;connexion</Link>
 			</div>
 		</div>
 	);

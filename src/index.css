@@ -23,7 +23,10 @@ code {
   text-decoration: none;
 }
 
+.link:hover { text-decoration: underline; }
+
 .link.red { color: #ED2939; }
+.link.white { color: #F7F7F7; }
 
 /* -- Errors */
 
@@ -46,8 +49,8 @@ code {
 
 @keyframes load {
   /* -36px = -(.loader.width / 2 + .loader.width) */
-  from { box-shadow: -36px 0 #ED2939 inset; }
-  to { box-shadow: 24px 0 #ED2939 inset; }
+  from { box-shadow: -36px 0 #275EFE inset; }
+  to { box-shadow: 24px 0 #275EFE inset; }
 }
 
 /* -- Special classes */

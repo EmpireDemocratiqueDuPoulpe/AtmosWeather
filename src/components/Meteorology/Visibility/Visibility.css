@@ -6,5 +6,4 @@
 .visibility .title,
 .visibility .value { display: inline-block;  }
 
-/* TODO: Change to primary color */
-.visibility .value { color: #ED2939; font-weight: bold; }
+.visibility .value { color: #517CDB; font-weight: bold; }

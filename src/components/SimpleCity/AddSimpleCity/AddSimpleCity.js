@@ -2,6 +2,7 @@ import {useState} from "react";
 import PropTypes from "prop-types";
 import Cities from "../../../global/Cities.js";
 import { ReactComponent as AddIcon } from "../../../assets/images/add_black_24dp.svg";
+import { ReactComponent as CloseIcon } from "../../../assets/images/close_black_24dp.svg";
 import "./AddSimpleCity.css";
 
 function AddSimpleCity(props) {
@@ -44,14 +45,20 @@ function AddSimpleCity(props) {
 								/>
 							</div>
 
-							<label className="asc-add-button square-keep-ratio">
-								<input type="submit"/>
-								<div className="asc-add-button-content">
-									<AddIcon/>
-									<span>Ajouter</span>
-								</div>
-							</label>
-							<input className="asc-cancel" type="button" value="Annuler" onClick={() => setIdle(true)}/>
+							<div className="asc-buttons">
+								<label className="asc-add-button">
+									<input type="submit"/>
+									<div className="asc-add-button-content">
+										<AddIcon/>
+										<span>Ajouter</span>
+									</div>
+								</label>
+
+								<label className="asc-cancel">
+									<input type="button" onClick={() => setIdle(true)}/>
+									<CloseIcon/>
+								</label>
+							</div>
 						</form>
 					)
 				}

@@ -12,8 +12,7 @@
   cursor: pointer;
 }
 
-/* TODO: Change to primary color */
-.section-header:hover { color: #ED2939; }
+.section-header:hover { color: #517CDB; }
 
 .section-header-arrow {
   width: 20px;
@@ -22,7 +21,7 @@
   transition: transform 200ms ease;
 }
 
-.section-header:hover .section-header-arrow { filter: invert(24%) sepia(89%) saturate(2278%) hue-rotate(338deg) brightness(93%) contrast(100%); }
+.section-header:hover .section-header-arrow { filter: invert(46%) sepia(90%) saturate(401%) hue-rotate(184deg) brightness(95%) contrast(88%); }
 .section-header-arrow.open { transform: rotate(90deg); }
 
 .section-header-title { margin: 0; }

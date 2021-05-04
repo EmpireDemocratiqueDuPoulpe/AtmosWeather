@@ -40,11 +40,16 @@
   width: 40%;
   height: 30px;
   margin: 10px auto 0 auto;
-  background: #ED2939;
+  background: #517CDB;
   color: white;
   border: none;
+  border-radius: 20px;
+  transition: background-color 100ms ease;
   cursor: pointer;
 }
+
+.register-box form input[type=submit]:hover { background: #4772D1; }
+.register-box form input[type=submit]:focus { outline: none; }
 
 .register-box form a {
   font-size: 0.9em;

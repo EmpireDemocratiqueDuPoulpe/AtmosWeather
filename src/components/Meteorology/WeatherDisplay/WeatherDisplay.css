@@ -18,7 +18,7 @@
   font-size: 6em;
   width: 100%;
   font-weight: bold;
-  color: #ED2939; /* TODO: Change to primary color */
+  color: #275EFE;
 }
 .weather-icon.wi.big::before { font-size: 12em; }
 
