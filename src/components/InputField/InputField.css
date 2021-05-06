@@ -30,29 +30,19 @@
   line-height: 25px;
   font-size: 14px;
   padding: 8px 12px;
-  background: #EEF4FF;
-  color: #99A3BA;
-  border: thin #CDD9ED solid;
+  border-width: thin;
+  border-style: solid;
   transition: background 300ms ease, border 300ms ease, color 300ms ease;
   cursor: text;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .input-field.field-error label {
-  background: #ED2939;
-  color: #960000;
-  border: thin #CC0E27 solid;
-}
-
-.input-field:focus-within > label {
-  background: #678EFE;
-  color: #FFFFFF;
-  border-color: #275EFE;
-}
-
-.input-field.field-error:focus-within > label {
-  background: #ED2939;
-  color: #960000;
-  border: thin #CC0E27 solid;
+  border-width: thin;
+  border-style: solid;
 }
 
 /* -- Input */
@@ -66,9 +56,8 @@
   margin-top: 0;
   margin-bottom: 0;
   padding: 8px 16px;
-  background: #FFFFFF;
-  color: #99A3BA;
-  border: thin #CDD9ED solid;
+  border-width: thin;
+  border-style: solid;
   border-radius: 6px;
   font-weight: 500;
   font-family: inherit;
@@ -76,12 +65,4 @@
   z-index: 1;
   -webkit-appearance: none;
 }
-
-.input-field input:focus {
-  outline: none;
-  border-color: #275EFE;
-}
-
-.input-field.field-error input:focus { border-color: #CC0E27; }
-
-.input-field input::placeholder { color: #CBD1DC; }
+.input-field input:focus { outline: none; }

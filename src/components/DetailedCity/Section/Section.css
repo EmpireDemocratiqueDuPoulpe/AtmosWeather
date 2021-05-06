@@ -12,8 +12,6 @@
   cursor: pointer;
 }
 
-.section-header:hover { color: #517CDB; }
-
 .section-header-arrow {
   width: 20px;
   height: 20px;
@@ -21,7 +19,6 @@
   transition: transform 200ms ease;
 }
 
-.section-header:hover .section-header-arrow { filter: invert(46%) sepia(90%) saturate(401%) hue-rotate(184deg) brightness(95%) contrast(88%); }
 .section-header-arrow.open { transform: rotate(90deg); }
 
 .section-header-title { margin: 0; }

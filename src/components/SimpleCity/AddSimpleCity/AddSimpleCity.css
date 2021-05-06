@@ -6,13 +6,12 @@
   /* 15px is the gap between elements in .cities-wrapper */
   width: calc(20% - 15px);
   margin: 0 2px 2px 0;
-  border: 3px #BABABA dashed;
+  border-width: 3px;
+  border-style: dashed;
   border-radius: 15px;
   transition: background-color 50ms ease-in;
   cursor: pointer;
 }
-
-.add-simple-city:hover { background: rgba(186, 186, 186, 0.2); }
 
 .add-simple-city::before {
   content: "";
@@ -27,11 +26,7 @@
 }
 
 .add-simple-city.expand {
-  background: #F7F7F7;
   border: none;
-  box-shadow: 3px 3px 0 3px #E7E6E6;
-  -webkit-box-shadow: 3px 3px 0 3px #E7E6E6;
-  -moz-box-shadow: 3px 3px 0 3px #E7E6E6;
   cursor: auto;
 }
 
@@ -63,7 +58,6 @@
 .asc-show-form-btn svg {
   width: 30%;
   height: 30%;
-  fill: #BABABA;
 }
 
 /* -- Form */
@@ -75,9 +69,7 @@
   width: 100%
 }
 
-.asc-form-field {
-  margin-bottom: 10px;
-}
+.asc-form-field {  margin-bottom: 10px; }
 
 .asc-form-field input {
   text-align: center;
@@ -85,19 +77,15 @@
   width: 100%;
   background: none;
   border: none;
-  border-bottom: 2px #3B3A3A solid;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
   font-weight: bold;
 }
 
-.asc-form-field input::placeholder {
-  font-size: 0.7em;
-}
+.asc-form-field input::placeholder { font-size: 0.7em; }
 
 .asc-form-field input:focus,
-.asc-form-field input:not(:placeholder-shown) {
-  border-color: #5B86E5;
-  outline: none;
-}
+.asc-form-field input:not(:placeholder-shown) { outline: none; }
 
 .asc-buttons {
   display: flex;
@@ -110,28 +98,11 @@
 .asc-add-button {
   margin: 0 1px 1px 0;
   padding: 0 5px;
-  background: #5B86E5;
   border-radius: 15px 0 0 15px;
-  box-shadow: 2px 2px 0 2px #4B75D4;
-  -webkit-box-shadow: 2px 2px 0 2px #4B75D4;
-  -moz-box-shadow: 2px 2px 0 2px #4B75D4;
   cursor: pointer;
   transition: background-color 50ms ease-in;
 }
-
-.asc-add-button:hover {
-  background: #517CDB;
-  box-shadow: 2px 2px 0 2px #416BCA;
-  -webkit-box-shadow: 2px 2px 0 2px #416BCA;
-  -moz-box-shadow: 2px 2px 0 2px #416BCA;
-}
-
-.asc-add-button:active {
-  margin: 1px 0 0 1px;
-  box-shadow: 1px 1px 0 1px #416BCA;
-  -webkit-box-shadow: 1px 1px 0 1px #416BCA;
-  -moz-box-shadow: 1px 1px 0 1px #416BCA;
-}
+.asc-add-button:active { margin: 1px 0 0 1px; }
 
 .asc-add-button input { display: none; }
 
@@ -146,19 +117,14 @@
 .asc-add-button-content svg {
   width: 60%;
   height: 60%;
-  fill: #F5F5F5;
   transition: fill 50ms ease-in;
 }
 
 .asc-add-button-content span {
   font-size: 1.1em;
-  color: #F5F5F5;
   font-weight: bold;
   transition: color 50ms ease-in;
 }
-
-.asc-add-button-content:hover svg { fill: #EBEBEB; }
-.asc-add-button-content:hover span { color: #EBEBEB; }
 
 .asc-cancel {
   display: flex;
@@ -166,37 +132,14 @@
   justify-items: center;
   align-items: center;
   margin: 0 1px 1px 0;
-  background: #ED2939;
   border: none;
   border-radius: 0 15px 15px 0;
-  box-shadow: 2px 2px 0 2px #DD1828;
-  -webkit-box-shadow: 2px 2px 0 2px #DD1828;
-  -moz-box-shadow: 2px 2px 0 2px #DD1828;
   transition: background-color 50ms ease-in;
   -webkit-appearance: none;
   cursor: pointer;
 }
-
 .asc-cancel:focus { outline: none; }
-
-.asc-cancel:hover {
-  background: #E31F2F;
-  box-shadow: 2px 2px 0 2px #D30E1E;
-  -webkit-box-shadow: 2px 2px 0 2px #D30E1E;
-  -moz-box-shadow: 2px 2px 0 2px #D30E1E;
-}
-
-.asc-cancel:active {
-  margin: 1px 0 0 1px;
-  box-shadow: 1px 1px 0 1px #D30E1E;
-  -webkit-box-shadow: 1px 1px 0 1px #D30E1E;
-  -moz-box-shadow: 1px 1px 0 1px #D30E1E;
-}
+.asc-cancel:active { margin: 1px 0 0 1px; }
 
 .asc-cancel input { display: none; }
-
-.asc-cancel svg {
-  fill: #A00000;
-  transition: fill 50ms ease-in;
-}
-.asc-cancel:hover svg { fill: #8C0000; }
+.asc-cancel svg { transition: fill 50ms ease-in; }

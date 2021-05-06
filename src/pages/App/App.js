@@ -32,7 +32,7 @@ export default function App() {
 							<ThemeSwitcher currentTheme={theme} onClick={toggleTheme} showText={false}/>
 						</div>
 						<div className="App-header-section center">
-							<AppLogo theme={theme}/>
+							<AppLogo theme={theme} always="light"/>
 						</div>
 						<div className="App-header-section right">
 							<UserDisplay/>

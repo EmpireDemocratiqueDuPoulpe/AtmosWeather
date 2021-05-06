@@ -27,6 +27,7 @@ code {
 
 .link.red { color: #ED2939; }
 .link.white { color: #F7F7F7; }
+.link.blue { color: #5B86E5; }
 
 /* -- Errors */
 
@@ -78,14 +79,6 @@ code {
 .centered-text { text-align: center; }
 
 .no-padding { padding: 0 !important; }
-
-.custom-scrollbars::-webkit-scrollbar       { width: 8px; }
-.custom-scrollbars::-webkit-scrollbar-track { background: transparent; }
-.custom-scrollbars::-webkit-scrollbar-thumb { background-color: #665A5A; border-radius: 50px; }
-.custom-scrollbars {
-  scrollbar-width: thin;
-  scrollbar-color: transparent #665A5A;
-}
 
 .square-keep-ratio { width: 100%; }
 .square-keep-ratio:not(.wi)::before { content: ""; }

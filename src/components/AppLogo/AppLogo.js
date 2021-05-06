@@ -17,8 +17,8 @@ const LOGOS = {
 };
 
 function AppLogo(props) {
-	const { theme, small } = props;
-	const logo = LOGOS[small ? "small" : "normal"][theme];
+	const { theme, always, small } = props;
+	const logo = LOGOS[small ? "small" : "normal"][always ?? theme];
 
 	return (
 		<div className={`App-logo ${props.small ? "small" : ""}`}>
@@ -29,6 +29,7 @@ function AppLogo(props) {
 
 AppLogo.propTypes = {
 	theme: PropTypes.string.isRequired,
+	always: PropTypes.oneOf([ "light", "dark" ]),
 	small: PropTypes.bool
 };
 
