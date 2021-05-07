@@ -27,7 +27,6 @@ const config = {
 		getTemperatureUnit() {
 			const floatingO = "\u00b0";
 
-			// Unicode character corresponding to unit taken from https://www.compart.com/fr/unicode/
 			switch (this.units) {
 			case "metric":
 				return `${floatingO}C`;
@@ -39,7 +38,6 @@ const config = {
 			}
 		},
 		getSpeedUnit() {
-			// Unicode character corresponding to unit taken from https://www.compart.com/fr/unicode/
 			switch (this.units) {
 			case "metric":
 				return this.speedToKmh ? "km/h" : "m/s";

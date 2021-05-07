@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import LogoBlack from "../../assets/images/logo_black.png";
-import LogoBlackSmall from "../../assets/images/logo_black_small.png";
-import LogoWhite from "../../assets/images/logo_white.png";
-import LogoWhiteSmall from "../../assets/images/logo_white_small.png";
+import LogoBlack from "../../assets/images/logo/logo_black.png";
+import LogoBlackSmall from "../../assets/images/logo/logo_black_small.png";
+import LogoWhite from "../../assets/images/logo/logo_white.png";
+import LogoWhiteSmall from "../../assets/images/logo/logo_white_small.png";
 import "./AppLogo.css";
 
 const LOGOS = {

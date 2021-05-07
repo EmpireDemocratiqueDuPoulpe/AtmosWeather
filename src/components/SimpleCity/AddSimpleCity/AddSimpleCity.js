@@ -1,8 +1,8 @@
 import {useState} from "react";
 import PropTypes from "prop-types";
 import Cities from "../../../global/Cities.js";
-import { ReactComponent as AddIcon } from "../../../assets/images/add_black_24dp.svg";
-import { ReactComponent as CloseIcon } from "../../../assets/images/close_black_24dp.svg";
+import { ReactComponent as AddIcon } from "../../../assets/images/icons/add_black_24dp.svg";
+import { ReactComponent as CloseIcon } from "../../../assets/images/icons/close_black_24dp.svg";
 import "./AddSimpleCity.css";
 
 function AddSimpleCity(props) {

@@ -5,8 +5,8 @@ import Weather from "../../global/Weather.js";
 import WeatherDisplay from "../Meteorology/WeatherDisplay/WeatherDisplay.js";
 import Temperature from "../Meteorology/Temperature/Temperature.js";
 import Wind from "../Meteorology/Wind/Wind.js";
-import { ReactComponent as MoreIcon } from "../../assets/images/more_horiz_black_24dp.svg";
-import { ReactComponent as DeleteIcon } from "../../assets/images/remove_circle_black_24dp.svg";
+import { ReactComponent as MoreIcon } from "../../assets/images/icons/more_horiz_black_24dp.svg";
+import { ReactComponent as DeleteIcon } from "../../assets/images/icons/remove_circle_black_24dp.svg";
 import "./SimpleCity.css";
 
 export default class SimpleCity extends React.Component {

@@ -17,8 +17,6 @@ async function register(username, email, password1, password2) {
 		})
 	};
 
-	// TODO: This trigger a SyntaxError (Unexpected end of JSON input) when receiving empty response.
-	// TODO: Edit API to connect user after registration
 	const response = await fetch(awApi.users.register, options);
 	return await response.json();
 }

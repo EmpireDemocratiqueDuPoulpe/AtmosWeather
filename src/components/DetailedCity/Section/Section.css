@@ -15,7 +15,7 @@
 .section-header-arrow {
   width: 20px;
   height: 20px;
-  background: url("../../../assets/images/expand_black_24dp.svg") center;
+  background: url("../../../assets/images/icons/expand_black_24dp.svg") center;
   transition: transform 200ms ease;
 }
 

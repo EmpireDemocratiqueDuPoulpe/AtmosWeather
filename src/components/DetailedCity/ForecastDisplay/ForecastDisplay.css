@@ -31,12 +31,12 @@
 
 .fd-previous-date {
   margin-left: 8px;
-  background: url("../../../assets/images/arrow_back_ios_new_black_24dp.svg") center;
+  background: url("../../../assets/images/icons/arrow_back_ios_new_black_24dp.svg") center;
 }
 
 .fd-next-date {
   margin-right: 8px;
-  background: url("../../../assets/images/arrow_forward_ios_black_24dp.svg") center;
+  background: url("../../../assets/images/icons/arrow_forward_ios_black_24dp.svg") center;
 }
 
 /* -- Selected date */
@@ -78,12 +78,12 @@
 
 .fd-previous-time {
   margin-left: 8px;
-  background: url("../../../assets/images/arrow_back_ios_new_black_24dp.svg") center;
+  background: url("../../../assets/images/icons/arrow_back_ios_new_black_24dp.svg") center;
 }
 
 .fd-next-time {
   margin-right: 8px;
-  background: url("../../../assets/images/arrow_forward_ios_black_24dp.svg") center;
+  background: url("../../../assets/images/icons/arrow_forward_ios_black_24dp.svg") center;
 }
 
 /* -- Time carrousel */

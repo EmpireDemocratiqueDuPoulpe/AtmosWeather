@@ -16,12 +16,12 @@
 
 .min-temperature .arrow {
   margin-right: 2px;
-  background: url("../../../assets/images/arrow_drop_down_black_24dp.svg") center;
+  background: url("../../../assets/images/icons/arrow_drop_down_black_24dp.svg") center;
   filter: invert(24%) sepia(89%) saturate(2278%) hue-rotate(338deg) brightness(93%) contrast(100%);
 }
 
 .max-temperature .arrow {
   margin-left: 3px;
-  background: url("../../../assets/images/arrow_drop_up_black_24dp.svg") center;
+  background: url("../../../assets/images/icons/arrow_drop_up_black_24dp.svg") center;
   filter: invert(42%) sepia(100%) saturate(923%) hue-rotate(85deg) brightness(102%) contrast(119%);
 }
