@@ -122,8 +122,8 @@ const dark = {
 	body: "#0C1445",
 	scrollbars: {
 		webkit_track: "transparent",
-		webkit_thumb: "#202859",
-		color: "transparent #202859"
+		webkit_thumb: "#2E3566",
+		color: "transparent #2E3566"
 	},
 	errors: {
 		message: { color: "#9CA4D9" },
@@ -163,6 +163,7 @@ const dark = {
 		expand: { background: "#202859", box_shadow: "#1A2152" },
 		showForm: { fill: "#202859" },
 		fields: {
+			color: "#9CA4D9",
 			placeholder: "rgba(156, 164, 217, 0.5)",
 			border: "#2A3263",
 			focus: { border: "#5B86E5" }

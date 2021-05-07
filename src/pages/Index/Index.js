@@ -14,7 +14,8 @@ class Index extends React.Component {
 		this.state = {
 			cities: null,
 			isLoaded: false,
-			error: null
+			error: null,
+			lastDeletedCity: null
 		};
 	}
 
@@ -30,11 +31,16 @@ class Index extends React.Component {
 	}
 
 	/* It's an arrow function to keep access to {this} without binding. */
+	handleCityDeletion = name => {
+		this.setState({ lastDeletedCity: name });
+	}
+
+	/* It's an arrow function to keep access to {this} without binding. */
 	addCity = name => {
 		const { cities } = this.state;
 		cities.push({ name: name });
 
-		this.setState({ cities: cities });
+		this.setState({ cities: cities, lastDeletedCity: null });
 	}
 
 	/*********************************
@@ -71,7 +77,13 @@ class Index extends React.Component {
 									<React.Fragment>
 										{
 											cities.map((city, index) => {
-												return <SimpleCity key={index} uid={uid} name={city.name} onClick={this.handleCityClick}/>;
+												return <SimpleCity
+													key={index}
+													uid={uid}
+													name={city.name}
+													onClick={this.handleCityClick}
+													onDelete={this.handleCityDeletion}
+												/>;
 											})
 										}
 									</React.Fragment>
@@ -86,7 +98,7 @@ class Index extends React.Component {
 	}
 
 	render() {
-		const { isLoaded } = this.state;
+		const { isLoaded, lastDeletedCity } = this.state;
 
 		return (
 			<div className="sky">
@@ -95,7 +107,7 @@ class Index extends React.Component {
 				</div>
 
 				<div className="city-detail custom-scrollbars">
-					<DetailedCity onRef={ ref => this.detailedCity = ref }/>
+					<DetailedCity onRef={ ref => this.detailedCity = ref } lastDeletedCity={lastDeletedCity}/>
 				</div>
 			</div>
 		);

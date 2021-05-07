@@ -123,7 +123,10 @@ const GlobalStyles = createGlobalStyle`
 
   .asc-show-form-btn svg { fill: ${({ theme }) => theme.addSimpleCity.showForm.fill}; }
 
-  .asc-form-field input { border-bottom-color: ${({ theme }) => theme.addSimpleCity.fields.border}; }
+  .asc-form-field input {
+    color: ${({ theme }) => theme.addSimpleCity.fields.color};
+    border-bottom-color: ${({ theme }) => theme.addSimpleCity.fields.border};
+  }
   .asc-form-field input::placeholder { color: ${({ theme }) => theme.addSimpleCity.fields.placeholder}; }
   .asc-form-field input:focus,
   .asc-form-field input:not(:placeholder-shown) {  border-bottom-color: ${({ theme }) => theme.addSimpleCity.fields.focus.border}; }
@@ -221,7 +224,7 @@ const GlobalStyles = createGlobalStyle`
   
   .input-field.field-error label {
     background: ${({ theme }) => theme.inputField.labelError.background};
-    color: ${({ theme }) => theme.inputField.labelError.color}
+    color: ${({ theme }) => theme.inputField.labelError.color};
     border-color: ${({ theme }) => theme.inputField.labelError.border};
   }
   

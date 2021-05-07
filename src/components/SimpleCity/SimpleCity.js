@@ -63,12 +63,13 @@ export default class SimpleCity extends React.Component {
 	/* It's an arrow function to keep access to {this} without binding. */
 	handleDeletion = event => {
 		event.stopPropagation();
-		const { uid, name } = this.props;
+		const { uid, name, onDelete } = this.props;
 
 		Cities.delete(uid, name)
 			.then(response => {
 				if (!response.err) {
 					this.setState({ deleted: true });
+					onDelete(name);
 				} else {
 					console.error(response);
 				}
@@ -160,9 +161,11 @@ export default class SimpleCity extends React.Component {
 SimpleCity.propTypes = {
 	uid: PropTypes.string.isRequired,
 	name: PropTypes.string.isRequired,
-	onClick: PropTypes.func
+	onClick: PropTypes.func,
+	onDelete: PropTypes.func
 };
 
 SimpleCity.defaultProps = {
-	onClick: () => {}
+	onClick: () => {},
+	onDelete: () => {}
 };

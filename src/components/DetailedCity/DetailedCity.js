@@ -102,6 +102,22 @@ export default class DetailedCity extends React.Component {
 		this.setState({ betterForecasts: newForecasts });
 	}
 
+	isCurrentCityDeleted() {
+		const { currentCity: { name } } = this.state;
+		const { lastDeletedCity } = this.props;
+
+		if (!lastDeletedCity) return;
+		if (name === lastDeletedCity) {
+			this.setState({
+				currentCity: DEFAULT_CURRENT_CITY,
+				isLoaded: false,
+				forecast: null,
+				betterForecasts: null,
+				error: null
+			});
+		}
+	}
+
 	/*********************************
 	 * React functions
 	 *********************************/
@@ -115,6 +131,7 @@ export default class DetailedCity extends React.Component {
 
 	render() {
 		const { currentCity: { name }, isLoaded } = this.state;
+		this.isCurrentCityDeleted();
 
 		return (
 			<div className="detailed-city">
@@ -189,5 +206,6 @@ export default class DetailedCity extends React.Component {
 }
 
 DetailedCity.propTypes = {
-	onRef: PropTypes.func.isRequired
+	onRef: PropTypes.func.isRequired,
+	lastDeletedCity: PropTypes.string
 };
