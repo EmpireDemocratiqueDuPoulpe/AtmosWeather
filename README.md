@@ -6,4 +6,4 @@ AtmosWeather est un site React.js capable d'afficher les prévisions météorolo
 ## Installation
 AtmosWeather fonctionne avec une API Express disponible [ici](https://github.com/EmpireDemocratiqueDuPoulpe/AtmosWeatherAPI). Il vous faudra l'installer aussi pour pouvoir utiliser le projet. Après avoir téléchargé et décompressé ce répertoire, il suffira d'exécuter `npm install` puis `npm start`.
 
-***[Eng]** This website is using an Express API available [here](https://github.com/EmpireDemocratiqueDuPoulpe/AtmosWeatherAPI). You must install it to use this project. After unzipping this repository, you simply need to run `npm install` and then `npm start`*.
+***[Eng]** This website is using an Express API available [here](https://github.com/EmpireDemocratiqueDuPoulpe/AtmosWeatherAPI). You must install it to use this project. After unzipping this repository, you simply need to run `npm install` and then `npm start`.*
